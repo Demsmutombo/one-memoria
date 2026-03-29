@@ -109,6 +109,12 @@ import Badge from '@/components/ui/Badge.vue'
 import SimpleCarousel from '@/components/ui/SimpleCarousel.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
 
+// Import hero images
+import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
+import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
+import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
+import profileImage from '@/assets/images/templates/profil/profile4.jpeg'
+
 const router = useRouter()
 
 const serviceSlides = [
@@ -116,28 +122,28 @@ const serviceSlides = [
     name: 'Sites Mémoriaux',
     years: 'Hommage Durable',
     quote: 'Un espace élégant pour honorer la mémoire de vos proches',
-    image: '/src/assets/images/templates/memorial/memorial.jpeg',
+    image: memorialImage,
     type: 'memorial'
   },
   {
     name: 'Sites de Mariage',
     years: 'Célébration d\'Amour',
     quote: 'Partagez votre histoire d\'amour avec un site romantique',
-    image: '/src/assets/images/templates/mariage/wedding.jpeg',
+    image: weddingImage,
     type: 'mariage'
   },
   {
     name: 'Sites d\'Anniversaire',
     years: 'Moments Précieux',
     quote: 'Commémorez vos étapes importantes avec joie',
-    image: '/src/assets/images/templates/anniversaire/anniv4.jpeg',
+    image: annivImage,
     type: 'anniversaire'
   },
   {
     name: 'Profils Personnels',
     years: 'Présence en Ligne',
     quote: 'Créez votre identité numérique professionnelle',
-    image: '/src/assets/images/templates/profil/profile4.jpeg',
+    image: profileImage,
     type: 'profil'
   }
 ]
