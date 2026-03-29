@@ -28,6 +28,10 @@
             <p class="text-sm text-gris mb-4">
               Honorez la mémoire de vos proches avec dignité et élégance.
             </p>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-doré font-bold text-lg">À partir de 50$</div>
+              <Badge variant="primary" size="small">Essentiel</Badge>
+            </div>
             <div class="flex items-center text-doré text-sm font-medium">
               <span>Voir templates</span>
               <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
@@ -50,6 +54,10 @@
             <p class="text-sm text-gris mb-4">
               Célébrez votre amour avec un site web élégant et romantique.
             </p>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-doré font-bold text-lg">À partir de 80$</div>
+              <Badge variant="primary" size="small">Standard</Badge>
+            </div>
             <div class="flex items-center text-doré text-sm font-medium">
               <span>Voir templates</span>
               <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
@@ -73,7 +81,7 @@
               Commémorez vos étapes importantes avec joie et festivité.
             </p>
             <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">80$</div>
+              <div class="text-doré font-bold text-lg">60$</div>
               <Badge variant="primary" size="small">Standard</Badge>
             </div>
           </div>
@@ -93,7 +101,7 @@
               Créez votre présence en ligne avec un site personnel professionnel.
             </p>
             <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">80$</div>
+              <div class="text-doré font-bold text-lg">70$</div>
               <Badge variant="primary" size="small">Standard</Badge>
             </div>
           </div>
