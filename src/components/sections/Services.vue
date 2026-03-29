@@ -64,7 +64,7 @@
       <div class="group cursor-pointer" @click="$router.push('/templates?category=anniversaire')">
         <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
           <div class="aspect-[4/3] bg-gradient-to-br from-yellow-400/30 to-orange-400/20 relative">
-            <img src="/src/assets/images/templates/anniversaire/anniv4.jpeg" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
+            <img :src="annivImage" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
           <div class="p-6">

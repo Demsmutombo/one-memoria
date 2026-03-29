@@ -107,6 +107,14 @@ import Button from '@/components/ui/Button.vue'
 import { templates } from '@/data/templates.js'
 import { sendToWhatsApp } from '@/services/whatsapp.js'
 
+// Import all template images
+import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
+import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
+import wedding2Image from '@/assets/images/templates/mariage/wedding2.jpeg'
+import wedding3Image from '@/assets/images/templates/mariage/wedding3.jpeg'
+import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
+import profileImage from '@/assets/images/templates/profil/profile3.jpeg'
+
 const router = useRouter()
 
 // Get specific memorial templates, all wedding templates, and one each of profile and anniversary
@@ -135,24 +143,26 @@ const getTemplateImage = (category, templateName) => {
   // Map templates to their actual images that exist
   const templateImages = {
     memorial: {
-      'Golden Celebration': '/src/assets/images/templates/memorial/memorial.jpeg',
-      'Green Leaves': '/src/assets/images/templates/memorial/memorial.jpeg',
-      'Cherry Blossoms': '/src/assets/images/templates/memorial/memorial.jpeg',
+      'Golden Celebration': memorialImage,
+      'Green Leaves': memorialImage,
+      'Cherry Blossoms': memorialImage,
     },
     mariage: {
-      'Romantic Wedding': '/src/assets/images/templates/mariage/wedding.jpeg',
-      'Elegant Union': '/src/assets/images/templates/mariage/wedding2.jpeg',
-      'Garden Wedding': '/src/assets/images/templates/mariage/wedding3.jpeg'
+      'Romantic Wedding': weddingImage,
+      'Elegant Union': wedding2Image,
+      'Garden Wedding': wedding3Image
     },
     anniversaire: {
-      'Premium Anniversary': '/src/assets/images/templates/anniversaire/anniv4.jpeg',
+      'Premium Anniversary': annivImage,
     },
     profil: {
-      'Professional Profile': '/src/assets/images/templates/profil/profile3.jpeg',
+      'Professional Profile': profileImage,
+      'Creative Portfolio': profileImage,
+      'Modern CV': profileImage
     }
   }
   
-  return templateImages[category]?.[templateName] || `/src/assets/images/templates/${category}/${category === 'memorial' ? 'memorial.jpeg' : category === 'mariage' ? 'wedding.jpeg' : category === 'anniversaire' ? 'anniv4.jpeg' : 'profile3.jpeg'}`
+  return templateImages[category]?.[templateName] || memorialImage
 }
 
 const openDemo = (url) => {
