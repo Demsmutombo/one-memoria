@@ -26,7 +26,7 @@
           <div class="relative overflow-hidden rounded-lg bg-blanc shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
             <!-- Service Preview -->
             <div class="aspect-[16/10] bg-gradient-to-br from-noir/80 to-noir/40 relative overflow-hidden">
-              <img src="/src/assets/images/templates/memorial/memorial.jpeg" alt="Sites Mémoriaux" class="w-full h-full object-cover">
+              <img :src="memorialImage" alt="Sites Mémoriaux" class="w-full h-full object-cover">
               
               <!-- Category Badge -->
               <div class="absolute top-4 left-4">
@@ -126,7 +126,7 @@
           <div class="relative overflow-hidden rounded-lg bg-blanc shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
             <!-- Service Preview -->
             <div class="aspect-[16/10] bg-gradient-to-br from-doré/40 to-doré/20 relative overflow-hidden">
-              <img src="/src/assets/images/templates/mariage/wedding.jpeg" alt="Sites de Mariage" class="w-full h-full object-cover">
+              <img :src="weddingImage" alt="Sites de Mariage" class="w-full h-full object-cover">
               
               <!-- Category Badge -->
               <div class="absolute top-4 left-4">
@@ -226,7 +226,7 @@
           <div class="relative overflow-hidden rounded-lg bg-blanc shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
             <!-- Service Preview -->
             <div class="aspect-[16/10] bg-gradient-to-br from-yellow-400/30 to-orange-400/20 relative overflow-hidden">
-              <img src="/src/assets/images/templates/anniversaire/anniv4.jpeg" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
+              <img :src="annivImage" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
               
               <!-- Category Badge -->
               <div class="absolute top-4 left-4">
@@ -326,7 +326,7 @@
           <div class="relative overflow-hidden rounded-lg bg-blanc shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
             <!-- Service Preview -->
             <div class="aspect-[16/10] bg-gradient-to-br from-blue-400/30 to-purple-400/20 relative overflow-hidden">
-              <img src="/src/assets/images/templates/profil/profile4.jpeg" alt="Profils Personnels" class="w-full h-full object-cover">
+              <img :src="profileImage" alt="Profils Personnels" class="w-full h-full object-cover">
               
               <!-- Category Badge -->
               <div class="absolute top-4 left-4">
@@ -427,6 +427,11 @@ import Section from '@/components/ui/Section.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
+import { ref } from 'vue'
+import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
+import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
+import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
+import profileImage from '@/assets/images/templates/profil/profile4.jpeg'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
 
 const sendToWhatsApp = () => {

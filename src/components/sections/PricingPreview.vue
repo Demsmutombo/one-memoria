@@ -19,7 +19,7 @@
           <div class="p-8">
             <div class="text-center mb-8">
               <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img src="/src/assets/images/templates/memorial/memorial.jpeg" alt="Essentiel" class="w-full h-full object-cover">
+                <img :src="memorialImage" alt="Essentiel" class="w-full h-full object-cover">
               </div>
               <h3 class="text-2xl font-serif text-noir mb-2">Essentiel</h3>
               <div class="text-3xl font-bold text-noir mb-2">50$ - 80$</div>
@@ -71,7 +71,7 @@
           <div class="p-8">
             <div class="text-center mb-8">
               <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img src="/src/assets/images/templates/mariage/wedding.jpeg" alt="Standard" class="w-full h-full object-cover">
+                <img :src="weddingImage" alt="Standard" class="w-full h-full object-cover">
               </div>
               <h3 class="text-2xl font-serif text-noir mb-2">Standard</h3>
               <div class="text-3xl font-bold text-noir mb-2">100$ - 150$</div>
@@ -124,7 +124,7 @@
           <div class="p-8">
             <div class="text-center mb-8">
               <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img src="/src/assets/images/templates/anniversaire/anniv4.jpeg" alt="Premium" class="w-full h-full object-cover">
+                <img :src="annivImage" alt="Premium" class="w-full h-full object-cover">
               </div>
               <h3 class="text-2xl font-serif text-noir mb-2">Premium</h3>
               <div class="text-3xl font-bold text-noir mb-2">150$ - 250$</div>
@@ -196,6 +196,9 @@ import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Section from '@/components/ui/Section.vue'
+import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
+import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
+import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
 
 const selectPlan = (plan) => {
