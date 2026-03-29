@@ -1,17 +1,17 @@
 <template>
-  <div class="min-h-screen bg-blanc flex flex-col items-center justify-between py-16">
-    <!-- Logo en haut -->
-    <div class="flex-1 flex items-center justify-center">
+  <div class="min-h-screen bg-blanc flex flex-col items-center justify-center py-16">
+    <!-- Logo et cercle combinés au centre -->
+    <div class="relative flex flex-col items-center justify-center">
+      <!-- Logo au centre -->
+      <div class="relative z-10 mb-4">
         <img 
           :src="logoImage" 
           alt="One Memoria" 
           class="w-32 h-32 object-contain"
         >
-    </div>
-    
-    <!-- Loader circulaire au milieu -->
-    <div class="relative">
-      <!-- Loader circulaire animé -->
+      </div>
+      
+      <!-- Loader circulaire autour du logo -->
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="w-48 h-48 border-4 border-doré/20 rounded-full"></div>
         <div class="absolute w-48 h-48 border-4 border-doré border-t-transparent rounded-full animate-spin"></div>
@@ -21,7 +21,7 @@
     </div>
     
     <!-- Texte One Memoria en bas avec effet clavier -->
-    <div class="flex-1 flex items-center justify-center">
+    <div class="mt-16">
       <h1 class="text-4xl font-serif text-noir">
         <span class="inline-block">{{ displayedText }}</span>
         <span class="inline-block w-0.5 h-8 bg-noir animate-pulse ml-1" v-if="showCursor"></span>
