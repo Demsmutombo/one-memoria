@@ -5,7 +5,7 @@
       <!-- Logo en haut -->
       <div class="flex-1 flex items-center justify-center">
         <img 
-          src="/src/assets/images/templates/logo (1).png" 
+          :src="logoImage" 
           alt="One Memoria" 
           class="w-64 h-64 object-contain"
         >
@@ -35,6 +35,7 @@ import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import Footer from '@/components/layout/Footer.vue'
+import logoImage from '@/assets/images/templates/logo (1).png'
 
 const router = useRouter()
 const showGlobalLoader = ref(false)

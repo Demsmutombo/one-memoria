@@ -5,7 +5,7 @@
         <!-- Logo -->
         <div class="flex items-center">
           <router-link to="/" class="flex items-center space-x-2">
-            <img src="/src/assets/images/templates/logo (1).png" alt="One Memoria" class="w-8 h-8 object-contain">
+            <img :src="logoImage" alt="One Memoria" class="w-8 h-8 object-contain">
             <span class="text-xl font-serif text-noir">One Memoria</span>
           </router-link>
         </div>
@@ -114,6 +114,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import logoImage from '@/assets/images/templates/logo (1).png'
 import Button from '@/components/ui/Button.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
 

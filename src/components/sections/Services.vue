@@ -42,7 +42,7 @@
       <div class="group cursor-pointer" @click="$router.push('/templates?category=mariage')">
         <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
           <div class="aspect-[4/3] bg-gradient-to-br from-doré/40 to-doré/20 relative">
-            <img src="/src/assets/images/templates/mariage/wedding.jpeg" alt="Sites de Mariage" class="w-full h-full object-cover">
+            <img :src="memorialImage" alt="Sites Mémoriaux" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
           <div class="p-6">
@@ -84,7 +84,7 @@
       <div class="group cursor-pointer" @click="$router.push('/templates?category=profil')">
         <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
           <div class="aspect-[4/3] bg-gradient-to-br from-blue-400/30 to-purple-400/20 relative">
-            <img src="/src/assets/images/templates/profil/profile3.jpeg" alt="Sites de Profil" class="w-full h-full object-cover">
+            <img :src="weddingImage" alt="Sites de Mariage" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
           <div class="p-6">
@@ -128,6 +128,11 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
+import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
+import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
+import profileImage from '@/assets/images/templates/profil/profile3.jpeg'
 import Section from '@/components/ui/Section.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'

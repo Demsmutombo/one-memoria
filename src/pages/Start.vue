@@ -2,11 +2,11 @@
   <div class="min-h-screen bg-blanc flex flex-col items-center justify-between py-16">
     <!-- Logo en haut -->
     <div class="flex-1 flex items-center justify-center">
-      <img 
-        src="/src/assets/images/templates/logo (1).png" 
-        alt="One Memoria" 
-        class="w-32 h-32 object-contain"
-      >
+        <img 
+          :src="logoImage" 
+          alt="One Memoria" 
+          class="w-32 h-32 object-contain"
+        >
     </div>
     
     <!-- Loader circulaire au milieu -->
@@ -33,6 +33,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import logoImage from '@/assets/images/templates/logo (1).png'
 
 const router = useRouter()
 const displayedText = ref('')
