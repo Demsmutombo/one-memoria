@@ -1,30 +1,34 @@
 <template>
-  <div class="min-h-screen bg-ivoire dark:bg-zinc-950 flex flex-col items-center justify-center py-16 transition-colors duration-300">
-    <!-- Logo et cercle combinés au centre -->
-    <div class="relative flex flex-col items-center justify-center">
-      <!-- Logo au centre -->
-      <div class="relative z-10 mb-4">
-        <img 
-          :src="logoImage" 
-          alt="One Memoria" 
-          class="h-44 w-44 object-contain sm:h-52 sm:w-52 md:h-64 md:w-64"
+  <div
+    class="flex min-h-screen flex-col items-center justify-center bg-noir px-4 py-12 transition-colors duration-300"
+  >
+    <div class="flex max-w-lg flex-col items-center gap-4 text-center sm:gap-5 md:gap-6">
+      <!-- Logo et cercles (tailles contenues dans le carré) -->
+      <div class="relative flex h-64 w-64 shrink-0 items-center justify-center sm:h-72 sm:w-72 md:h-80 md:w-80">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="h-56 w-56 rounded-full border-4 border-doré/20 sm:h-[15rem] sm:w-[15rem] md:h-[17rem] md:w-[17rem]"></div>
+          <div
+            class="absolute h-56 w-56 animate-spin rounded-full border-4 border-doré border-t-transparent sm:h-[15rem] sm:w-[15rem] md:h-[17rem] md:w-[17rem]"
+          ></div>
+          <div class="absolute h-48 w-48 rounded-full border-4 border-doré/10 sm:h-52 sm:w-52 md:h-56 md:w-56"></div>
+          <div
+            class="absolute h-48 w-48 animate-spin rounded-full border-4 border-doré/30 border-b-transparent sm:h-52 sm:w-52 md:h-56 md:w-56"
+            style="animation-direction: reverse; animation-duration: 2s;"
+          ></div>
+        </div>
+        <img
+          :src="logoImage"
+          alt="One Memoria"
+          class="relative z-10 h-36 w-36 object-contain sm:h-44 sm:w-44 md:h-48 md:w-48"
         >
       </div>
-      
-      <!-- Loader circulaire autour du logo -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="h-60 w-60 border-4 border-doré/20 rounded-full sm:h-64 sm:w-64 md:h-72 md:w-72"></div>
-        <div class="absolute h-60 w-60 border-4 border-doré border-t-transparent rounded-full animate-spin sm:h-64 sm:w-64 md:h-72 md:w-72"></div>
-        <div class="absolute h-52 w-52 border-4 border-doré/10 rounded-full sm:h-56 sm:w-56 md:h-64 md:w-64"></div>
-        <div class="absolute h-52 w-52 border-4 border-doré/30 border-b-transparent rounded-full animate-spin sm:h-56 sm:w-56 md:h-64 md:w-64" style="animation-direction: reverse; animation-duration: 2s;"></div>
-      </div>
-    </div>
-    
-    <!-- Texte One Memoria en bas avec effet clavier -->
-    <div class="mt-16">
-      <h1 class="text-4xl font-serif text-noir dark:text-zinc-100">
+
+      <h1 class="font-serif text-3xl text-zinc-100 sm:text-4xl md:text-5xl">
         <span class="inline-block">{{ displayedText }}</span>
-        <span class="inline-block w-0.5 h-8 bg-noir dark:bg-zinc-300 animate-pulse ml-1" v-if="showCursor"></span>
+        <span
+          v-if="showCursor"
+          class="ml-1 inline-block h-8 w-0.5 animate-pulse bg-doré"
+        ></span>
       </h1>
     </div>
   </div>

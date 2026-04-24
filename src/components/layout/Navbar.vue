@@ -46,8 +46,8 @@
           </router-link>
         </div>
 
-        <!-- CTA Button -->
-        <div class="hidden md:flex items-center space-x-3">
+        <!-- CTA (écarté du lien Contact) -->
+        <div class="hidden items-center space-x-3 md:ml-10 md:flex lg:ml-14">
           <ThemeToggle />
           <Button variant="primary" @click="sendToWhatsApp">
             Contacter WhatsApp
@@ -113,7 +113,7 @@
           >
             Contact
           </router-link>
-          <div class="border-t border-stone-200/80 pt-3 dark:border-zinc-800">
+          <div class="mt-5 border-t border-stone-200/80 pt-5 dark:border-zinc-800">
             <ThemeToggle />
           </div>
           <Button variant="primary" full-width @click="sendToWhatsApp">

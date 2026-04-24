@@ -1,40 +1,47 @@
 <template>
-  <div
-    class="inline-flex rounded-lg border border-stone-200/90 bg-stone-100/80 p-0.5 dark:border-zinc-700 dark:bg-zinc-900/80"
-    role="group"
-    aria-label="Thème d’affichage"
+  <button
+    type="button"
+    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200/90 bg-gradient-to-b from-white to-stone-100 text-noir shadow-sm transition-all duration-300 hover:border-doré/40 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-doré focus-visible:ring-offset-2 dark:border-doré/25 dark:from-zinc-800 dark:to-zinc-900 dark:text-doré dark:shadow-[inset_0_1px_0_0_rgba(212,175,55,0.08)] dark:ring-offset-zinc-950 dark:hover:border-doré/50 dark:hover:shadow-[0_0_16px_-4px_rgba(212,175,55,0.25)]"
+    :aria-label="isDark ? 'Passer au thème clair' : 'Passer au thème sombre'"
+    @click="toggleTheme"
   >
-    <button
-      type="button"
-      class="rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:px-3 sm:text-sm"
-      :class="
-        !isDark
-          ? 'bg-white text-noir shadow-sm dark:bg-zinc-800 dark:text-zinc-100'
-          : 'text-gris hover:text-noir dark:text-zinc-400 dark:hover:text-zinc-200'
-      "
-      :aria-pressed="!isDark"
-      @click="setTheme('light')"
+    <!-- Lune : affichée en mode clair → clic active le sombre -->
+    <svg
+      v-if="!isDark"
+      class="h-[1.125rem] w-[1.125rem]"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
     >
-      Clair
-    </button>
-    <button
-      type="button"
-      class="rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:px-3 sm:text-sm"
-      :class="
-        isDark
-          ? 'bg-zinc-800 text-zinc-100 shadow-sm ring-1 ring-zinc-600'
-          : 'text-gris hover:text-noir dark:text-zinc-400 dark:hover:text-zinc-200'
-      "
-      :aria-pressed="isDark"
-      @click="setTheme('dark')"
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+      />
+    </svg>
+    <!-- Soleil : affiché en mode sombre → clic active le clair -->
+    <svg
+      v-else
+      class="h-[1.125rem] w-[1.125rem]"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
     >
-      Sombre
-    </button>
-  </div>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      />
+    </svg>
+  </button>
 </template>
 
 <script setup>
 import { useTheme } from '@/composables/useTheme'
 
-const { isDark, setTheme } = useTheme()
+const { isDark, toggleTheme } = useTheme()
 </script>
