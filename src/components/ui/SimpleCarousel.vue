@@ -45,7 +45,7 @@
         :key="index"
         @click="goToSlide(index)"
         class="w-2 h-2 rounded-full transition-colors duration-200"
-        :class="index === currentIndex ? 'bg-doré' : 'bg-blanc/50'"
+        :class="index === currentIndex ? 'bg-doré' : 'bg-blanc/50 dark:bg-zinc-600'"
       />
     </div>
   </div>

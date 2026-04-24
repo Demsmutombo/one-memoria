@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t === 'dark') document.documentElement.classList.add('dark')
+          else document.documentElement.classList.remove('dark')
+        } catch (e) {}
+      })()
+    </script>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="One Memoria — Sites web élégants pour hommages, mariages et souvenirs. Design sobre et intemporel."
+    />
     <title>One Memoria - Sites Web Personnalisés</title>
   </head>
-  <body class="bg-blanc text-noir">
+  <body class="bg-ivoire text-noir dark:bg-zinc-950 dark:text-zinc-100 antialiased transition-colors duration-300">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

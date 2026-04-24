@@ -1,28 +1,35 @@
 <template>
   <Section padding="large">
     <template #header>
-      <Badge variant="primary" class="mb-4">Tarifs Simples</Badge>
-      <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
-        Choisissez Votre
-        <span class="text-doré">Formule</span>
+      <Badge variant="primary" class="mb-4">Tarifs simples</Badge>
+      <h2 class="heading-memorial mb-6 text-[1.65rem] font-semibold leading-tight text-noir dark:text-zinc-100 sm:text-3xl md:text-4xl">
+        Choisissez votre
+        <span class="text-doré">formule</span>
       </h2>
-      <p class="text-lg text-gris max-w-3xl mx-auto">
-        Des tarifs transparents adaptés à tous les besoins. 
-        Pas de frais cachés, que de la qualité.
+      <div class="divider-gold mb-8" />
+      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Des tarifs clairs, sans surprise — pour un rendu digne d’un bel hommage ou d’un site de mariage
+        soigné.
+      </p>
+      <p class="text-base text-noir dark:text-zinc-300 max-w-2xl mx-auto mt-5">
+        Sites d’anniversaire et profils personnels : tarif fixe <span class="text-doré font-semibold">{{ FIXED_PRICE_ANNIVERSAIRE_PROFIL }}</span>.
+      </p>
+      <p class="mx-auto mt-3 max-w-2xl text-base text-noir dark:text-zinc-300">
+        {{ TIER_PRICES_WHATSAPP_LINE_FR }}
       </p>
     </template>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
       <!-- Essentiel Plan -->
       <div class="relative">
         <Card variant="outlined" hover class="h-full">
-          <div class="p-8">
-            <div class="text-center mb-8">
-              <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img :src="memorialImage" alt="Essentiel" class="w-full h-full object-cover">
+          <div class="p-5 sm:p-8">
+            <div class="mb-6 text-center sm:mb-8">
+              <div class="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-lg sm:h-24 sm:w-24">
+                <img :src="memorialImage" alt="Essentiel" class="h-full w-full object-cover">
               </div>
-              <h3 class="text-2xl font-serif text-noir mb-2">Essentiel</h3>
-              <div class="text-3xl font-bold text-noir mb-2">50$ - 80$</div>
+              <h3 class="mb-2 font-serif text-xl text-noir dark:text-zinc-100 sm:text-2xl">Essentiel</h3>
+              <div class="mb-2 text-xl font-bold leading-snug text-noir dark:text-zinc-100 sm:text-2xl md:text-3xl">{{ TIER_PRICES.essentiel }}</div>
               <p class="text-gris">Pour les besoins simples</p>
             </div>
             
@@ -54,27 +61,27 @@
             </ul>
             
             <Button variant="outline" full-width @click="selectPlan('essentiel')">
-              Choisir cette formule
+              Commander
             </Button>
           </div>
         </Card>
       </div>
 
       <!-- Standard Plan (Most Popular) -->
-      <div class="relative">
+      <div class="relative md:pt-2">
         <!-- Popular Badge -->
-        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <Badge variant="gold" size="large">Le plus choisi</Badge>
+        <div class="absolute -top-3 left-1/2 z-10 -translate-x-1/2 sm:-top-4">
+          <Badge variant="gold" size="large">Recommandé</Badge>
         </div>
         
         <Card variant="elevated" hover class="h-full border-2 border-doré shadow-xl">
-          <div class="p-8">
-            <div class="text-center mb-8">
-              <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img :src="weddingImage" alt="Standard" class="w-full h-full object-cover">
+          <div class="p-5 pt-8 sm:p-8">
+            <div class="mb-6 text-center sm:mb-8">
+              <div class="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-lg sm:h-24 sm:w-24">
+                <img :src="weddingImage" alt="Standard" class="h-full w-full object-cover">
               </div>
-              <h3 class="text-2xl font-serif text-noir mb-2">Standard</h3>
-              <div class="text-3xl font-bold text-noir mb-2">100$ - 150$</div>
+              <h3 class="mb-2 font-serif text-xl text-noir dark:text-zinc-100 sm:text-2xl">Standard</h3>
+              <div class="mb-2 text-xl font-bold leading-snug text-doré sm:text-2xl md:text-3xl">{{ TIER_PRICES.standard }}</div>
               <p class="text-gris">Fonctionnalités avancées</p>
             </div>
             
@@ -112,7 +119,7 @@
             </ul>
             
             <Button variant="primary" full-width @click="selectPlan('standard')">
-              Choisir cette formule
+              Commander
             </Button>
           </div>
         </Card>
@@ -121,13 +128,13 @@
       <!-- Premium Plan -->
       <div class="relative">
         <Card variant="outlined" hover class="h-full">
-          <div class="p-8">
-            <div class="text-center mb-8">
-              <div class="w-24 h-24 mx-auto mb-4 rounded-lg overflow-hidden">
-                <img :src="annivImage" alt="Premium" class="w-full h-full object-cover">
+          <div class="p-5 sm:p-8">
+            <div class="mb-6 text-center sm:mb-8">
+              <div class="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-lg sm:h-24 sm:w-24">
+                <img :src="annivImage" alt="Premium" class="h-full w-full object-cover">
               </div>
-              <h3 class="text-2xl font-serif text-noir mb-2">Premium</h3>
-              <div class="text-3xl font-bold text-noir mb-2">150$ - 250$</div>
+              <h3 class="mb-2 font-serif text-xl text-noir dark:text-zinc-100 sm:text-2xl">Premium</h3>
+              <div class="mb-2 text-xl font-bold leading-snug text-noir dark:text-zinc-100 sm:text-2xl md:text-3xl">{{ TIER_PRICES.premium }}</div>
               <p class="text-gris">Tout inclus, support VIP</p>
             </div>
             
@@ -171,7 +178,7 @@
             </ul>
             
             <Button variant="outline" full-width @click="selectPlan('premium')">
-              Choisir cette formule
+              Commander
             </Button>
           </div>
         </Card>
@@ -200,11 +207,17 @@ import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
 import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
 import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import {
+  TIER_PRICES,
+  FIXED_PRICE_ANNIVERSAIRE_PROFIL,
+  TIER_PRICES_WHATSAPP_LINE_FR
+} from '@/data/pricing.js'
 
 const selectPlan = (plan) => {
+  const price = TIER_PRICES[plan]
   const message = `Bonjour One Memoria,
 
-Je suis intéressé(e) par la formule "${plan}".
+Je suis intéressé(e) par la formule "${plan}" (${price}).
 
 Pouvez-vous me donner plus d'informations ?`
 

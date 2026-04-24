@@ -1,15 +1,15 @@
 <template>
   <Section padding="large" background="light">
     <template #header>
-      <Badge variant="primary" class="mb-4">Tous Nos Templates</Badge>
-      <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
-        Découvrez Nos
-        <span class="text-doré">Templates</span>
+      <Badge variant="primary" class="mb-4">Tous nos templates</Badge>
+      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
+        Découvrez nos
+        <span class="text-doré">templates</span>
       </h2>
-      <p class="text-lg text-gris max-w-3xl mx-auto">
-        Des designs élégants et respectueux pour honorer la mémoire de vos proches, 
-        célébrer votre amour, commémorer vos moments importants et créer votre présence en ligne. 
-        Chaque template est personnalisable selon vos besoins.
+      <div class="divider-gold mb-8" />
+      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Des mises en page sobres et respectueuses — pour un hommage, un mariage ou votre présence en ligne.
+        Chaque modèle s’adapte à votre histoire.
       </p>
     </template>
 
@@ -21,7 +21,7 @@
         class="group cursor-pointer"
         @click="openDemo(template.demoUrl)"
       >
-        <div class="relative overflow-hidden rounded-lg bg-blanc shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
+        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800 transition-all duration-300 group-hover:shadow-memorial group-hover:-translate-y-1">
           <!-- Template Preview -->
           <div class="aspect-[16/10] bg-gradient-to-br from-noir/10 to-doré/10 relative overflow-hidden">
             <img :src="getTemplateImage(template.category, template.name)" :alt="template.name" class="w-full h-full object-cover">

@@ -1,10 +1,12 @@
 <template>
-  <footer class="bg-gris-clair border-t border-gris">
+  <footer
+    class="border-t border-stone-200/90 bg-gradient-to-b from-stone-100/80 to-stone-100 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950 transition-colors duration-300"
+  >
     <div class="container-custom">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
         <!-- Quick Links -->
         <div>
-          <h3 class="font-serif text-lg text-noir mb-6">Liens Rapides</h3>
+          <h3 class="font-serif text-lg text-noir dark:text-zinc-100 mb-6">Liens Rapides</h3>
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-2">
               <router-link to="/templates" class="block text-sm text-gris hover:text-doré transition-colors duration-300">
@@ -39,7 +41,7 @@
 
       <!-- Contact -->
         <div>
-          <h3 class="font-serif text-lg text-noir mb-6">Contactez-nous</h3>
+          <h3 class="font-serif text-lg text-noir dark:text-zinc-100 mb-6">Contactez-nous</h3>
           <div class="space-y-3">
             <a href="mailto:onememoria@gmail.com" class="flex items-center text-sm text-gris hover:text-doré transition-colors duration-300">
               <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -65,19 +67,19 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-gris py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="text-sm text-gris mb-4 md:mb-0">
+      <div class="border-t border-gris py-6 dark:border-zinc-700">
+        <div class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+          <div class="text-sm text-gris">
             &copy; 2024 One Memoria. Tous droits réservés.
           </div>
-          <div class="flex items-center space-x-6">
-            <a href="#" class="text-sm text-gris hover:text-doré transition-colors duration-300">
+          <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:justify-end">
+            <a href="#" class="text-sm text-gris transition-colors duration-300 hover:text-doré">
               Confidentialité
             </a>
-            <a href="#" class="text-sm text-gris hover:text-doré transition-colors duration-300">
+            <a href="#" class="text-sm text-gris transition-colors duration-300 hover:text-doré">
               Conditions
             </a>
-            <a href="#" class="text-sm text-gris hover:text-doré transition-colors duration-300">
+            <a href="#" class="text-sm text-gris transition-colors duration-300 hover:text-doré">
               Mentions légales
             </a>
           </div>
@@ -87,10 +89,11 @@
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <div class="fixed bottom-6 right-6 z-40">
+  <div class="fixed bottom-[max(1rem,env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-40">
     <button 
+      type="button"
       @click="openWhatsAppChat"
-      class="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110"
+      class="rounded-full bg-green-500 p-4 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-green-600 active:scale-95"
       aria-label="Contacter via WhatsApp"
     >
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

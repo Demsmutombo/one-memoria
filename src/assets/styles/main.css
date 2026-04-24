@@ -5,10 +5,38 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
   
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    text-size-adjust: 100%;
+  }
+
+  #app {
+    overflow-x: hidden;
+  }
+
+  button,
+  a[href],
+  [role='button'] {
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    @apply bg-doré/25 text-noir;
+  }
+
+  .dark ::selection {
+    @apply bg-doré/30 text-blanc;
   }
 }
 
@@ -31,5 +59,15 @@
   
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .heading-memorial {
+    @apply font-serif tracking-memorial text-balance;
+  }
+
+  .divider-gold {
+    @apply h-px w-16 bg-gradient-to-r from-transparent via-doré to-transparent mx-auto;
   }
 }

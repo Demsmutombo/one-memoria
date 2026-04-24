@@ -1,50 +1,40 @@
 <template>
-  <button
-    @click="toggleTheme"
-    class="p-2 rounded-lg transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-    :aria-label="isDark ? 'Passer au mode clair' : 'Passer au mode sombre'"
+  <div
+    class="inline-flex rounded-lg border border-stone-200/90 bg-stone-100/80 p-0.5 dark:border-zinc-700 dark:bg-zinc-900/80"
+    role="group"
+    aria-label="Thème d’affichage"
   >
-    <!-- Sun icon for light mode -->
-    <svg
-      v-if="!isDark"
-      class="w-5 h-5 text-noir dark:text-blanc"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
+    <button
+      type="button"
+      class="rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:px-3 sm:text-sm"
+      :class="
+        !isDark
+          ? 'bg-white text-noir shadow-sm dark:bg-zinc-800 dark:text-zinc-100'
+          : 'text-gris hover:text-noir dark:text-zinc-400 dark:hover:text-zinc-200'
+      "
+      :aria-pressed="!isDark"
+      @click="setTheme('light')"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-      />
-    </svg>
-    
-    <!-- Moon icon for dark mode -->
-    <svg
-      v-else
-      class="w-5 h-5 text-noir dark:text-blanc"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
+      Clair
+    </button>
+    <button
+      type="button"
+      class="rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:px-3 sm:text-sm"
+      :class="
+        isDark
+          ? 'bg-zinc-800 text-zinc-100 shadow-sm ring-1 ring-zinc-600'
+          : 'text-gris hover:text-noir dark:text-zinc-400 dark:hover:text-zinc-200'
+      "
+      :aria-pressed="isDark"
+      @click="setTheme('dark')"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-      />
-    </svg>
-  </button>
+      Sombre
+    </button>
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { useTheme } from '@/composables/useTheme'
 
-const { isDark, toggleTheme, initTheme } = useTheme()
-
-onMounted(() => {
-  initTheme()
-})
+const { isDark, setTheme } = useTheme()
 </script>

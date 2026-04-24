@@ -1,39 +1,52 @@
-import { ref, watch } from 'vue'
+import { ref, computed } from 'vue'
+
+const theme = ref('light')
+
+function applyToDocument(value) {
+  document.documentElement.classList.toggle('dark', value === 'dark')
+}
+
+function persist(value) {
+  try {
+    localStorage.setItem('theme', value)
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+export function initTheme() {
+  try {
+    const saved = localStorage.getItem('theme')
+    if (saved === 'dark' || saved === 'light') {
+      theme.value = saved
+      applyToDocument(saved)
+      return
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  theme.value = 'light'
+  applyToDocument('light')
+}
 
 export function useTheme() {
-  const theme = ref('light')
-  const isDark = ref(false)
+  const isDark = computed(() => theme.value === 'dark')
+
+  const setTheme = (mode) => {
+    if (mode !== 'light' && mode !== 'dark') return
+    theme.value = mode
+    persist(mode)
+    applyToDocument(mode)
+  }
 
   const toggleTheme = () => {
-    theme.value = theme.value === 'light' ? 'dark' : 'light'
-    localStorage.setItem('theme', theme.value)
-    updateTheme()
+    setTheme(theme.value === 'light' ? 'dark' : 'light')
   }
-
-  const updateTheme = () => {
-    isDark.value = theme.value === 'dark'
-    if (isDark.value) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
-
-  const initTheme = () => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      theme.value = savedTheme
-    } else {
-      theme.value = 'light'
-    }
-    updateTheme()
-  }
-
-  watch(theme, updateTheme, { immediate: true })
 
   return {
     theme,
     isDark,
+    setTheme,
     toggleTheme,
     initTheme
   }

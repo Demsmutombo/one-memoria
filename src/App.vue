@@ -1,19 +1,19 @@
 <template>
-  <div id="app" class="min-h-screen bg-blanc">
+  <div id="app" class="min-h-screen bg-ivoire dark:bg-zinc-950 text-noir dark:text-zinc-100 transition-colors duration-300">
     <!-- Loader global -->
-    <div v-if="showGlobalLoader" class="fixed inset-0 bg-blanc z-50 flex flex-col items-center justify-between py-16">
+    <div v-if="showGlobalLoader" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-ivoire px-4 py-10 sm:py-16 dark:bg-zinc-950">
       <!-- Logo en haut -->
-      <div class="flex-1 flex items-center justify-center">
+      <div class="flex flex-1 items-center justify-center">
         <img 
           :src="logoImage" 
           alt="One Memoria" 
-          class="w-64 h-64 object-contain"
+          class="h-52 w-52 object-contain sm:h-64 sm:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96"
         >
       </div>
       
       <!-- Texte One Memoria en bas avec effet clavier -->
-      <div class="flex-1 flex items-center justify-center">
-        <h1 class="text-4xl font-serif text-noir">
+      <div class="flex flex-1 items-center justify-center pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <h1 class="font-serif text-2xl text-noir dark:text-zinc-100 sm:text-3xl md:text-4xl">
           <span class="inline-block">{{ displayedText }}</span>
         </h1>
       </div>

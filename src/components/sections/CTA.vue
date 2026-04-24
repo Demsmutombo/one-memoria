@@ -1,24 +1,25 @@
 <template>
-    <Section padding="large" class="relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-doré/20 to-noir/20"></div>
-    </div>
+    <Section padding="large" background="light" class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-doré/[0.06] via-transparent to-transparent dark:from-doré/[0.04]"
+      aria-hidden="true"
+    />
 
     <div class="relative z-10 text-center">
       <div class="max-w-4xl mx-auto">
-        <Badge variant="gold" size="large" class="mb-6">
-          Dernière Étape
+        <Badge variant="gold" size="large" class="mb-6 !rounded-full px-5 tracking-wide">
+          Dernière étape
         </Badge>
         
-        <h2 class="text-3xl md:text-5xl font-serif text-noir mb-6 leading-tight">
-          Votre Histoire Mérite
-          <span class="text-doré block">d'Être Racontée</span>
+        <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-5xl mb-6 leading-tight">
+          Votre histoire mérite
+          <span class="text-doré block mt-1">d’être racontée</span>
         </h2>
+        <div class="divider-gold mb-10" />
         
-        <p class="text-xl md:text-2xl text-gris mb-12 leading-relaxed max-w-3xl mx-auto">
-          Ne laissez pas vos précieux souvenirs s'estomper. 
-          Créez un espace élégant pour les préserver et les partager.
+        <p class="text-lg md:text-xl text-gris dark:text-zinc-400 mb-12 leading-relaxed max-w-2xl mx-auto">
+          Offrez à vos proches un espace calme et élégant pour se recueillir, feuilleter des photos
+          et laisser un mot — comme dans un livre d’or, accessible partout.
         </p>
 
         <!-- Stats -->

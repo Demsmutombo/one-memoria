@@ -1,14 +1,15 @@
 <template>
   <Section padding="large" background="light">
     <template #header>
-      <Badge variant="primary" class="mb-4">Notre Processus</Badge>
-      <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+      <Badge variant="primary" class="mb-4">Notre processus</Badge>
+      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
         Simple et
-        <span class="text-doré">Efficace</span>
+        <span class="text-doré">efficace</span>
       </h2>
-      <p class="text-lg text-gris max-w-3xl mx-auto">
-        Nous rendons la création de votre site web simple et agréable. 
-        Suivez ces étapes pour obtenir votre site personnalisé.
+      <div class="divider-gold mb-8" />
+      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        De votre premier message à la mise en ligne, chaque étape est claire — pour un projet serein,
+        comme il se doit.
       </p>
     </template>
 

@@ -24,9 +24,9 @@ const badgeClass = computed(() => {
   const baseClass = 'inline-flex items-center font-weight-500 rounded-full'
   
   const variantClasses = {
-    default: 'bg-gris-clair text-noir',
+    default: 'bg-gris-clair dark:bg-zinc-800 text-noir dark:text-zinc-100',
     primary: 'bg-doré text-noir',
-    secondary: 'bg-noir text-blanc',
+    secondary: 'bg-noir text-blanc dark:bg-zinc-800 dark:text-zinc-100',
     success: 'bg-green-100 text-green-800',
     warning: 'bg-yellow-100 text-yellow-800',
     gold: 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-noir'

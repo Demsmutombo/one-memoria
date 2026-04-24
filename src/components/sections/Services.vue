@@ -1,21 +1,21 @@
 <template>
   <Section padding="large">
     <template #header>
-      <Badge variant="primary" class="mb-4">Nos Services</Badge>
-      <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
-        Sites Web pour Chaque
-        <span class="text-doré">Moment Important</span>
+      <Badge variant="primary" class="mb-4">Nos services</Badge>
+      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
+        Une offre pour chaque
+        <span class="text-doré">moment de vie</span>
       </h2>
-      <p class="text-lg text-gris max-w-3xl mx-auto">
-        Nous créons des sites web personnalisés pour célébrer vos moments les plus précieux, 
-        avec design élégant et fonctionnalités adaptées à chaque occasion.
+      <div class="divider-gold mb-8" />
+      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+        Hommages, unions, anniversaires ou présence professionnelle — le même souci du détail.
       </p>
     </template>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
       <!-- Memorial Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=memorial')">
-        <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
+        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
           <div class="aspect-[4/3] bg-gradient-to-br from-noir/80 to-noir/40 relative">
             <div class="absolute inset-0 flex items-center justify-center">
               <svg class="w-16 h-16 text-doré" fill="currentColor" viewBox="0 0 20 20">
@@ -23,14 +23,14 @@
               </svg>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-serif text-noir mb-2">Sites Mémoriaux</h3>
+          <div class="p-5 sm:p-6">
+            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Sites Mémoriaux</h3>
             <p class="text-sm text-gris mb-4">
               Honorez la mémoire de vos proches avec dignité et élégance.
             </p>
             <div class="flex items-center justify-between mb-3">
-              <div class="text-doré font-bold text-lg">À partir de 50$</div>
-              <Badge variant="primary" size="small">Essentiel</Badge>
+              <div class="text-doré font-bold text-lg">{{ CATEGORY_CARD_MEMORIAL.label }}</div>
+              <Badge variant="primary" size="small">{{ CATEGORY_CARD_MEMORIAL.badge }}</Badge>
             </div>
             <div class="flex items-center text-doré text-sm font-medium">
               <span>Voir templates</span>
@@ -44,19 +44,19 @@
 
       <!-- Wedding Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=mariage')">
-        <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
+        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
           <div class="aspect-[4/3] bg-gradient-to-br from-doré/40 to-doré/20 relative">
             <img :src="memorialImage" alt="Sites Mémoriaux" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-serif text-noir mb-2">Mariages</h3>
+          <div class="p-5 sm:p-6">
+            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Mariages</h3>
             <p class="text-sm text-gris mb-4">
               Célébrez votre amour avec un site web élégant et romantique.
             </p>
             <div class="flex items-center justify-between mb-3">
-              <div class="text-doré font-bold text-lg">À partir de 80$</div>
-              <Badge variant="primary" size="small">Standard</Badge>
+              <div class="text-doré font-bold text-lg">{{ CATEGORY_CARD_MARIAGE.label }}</div>
+              <Badge :variant="CATEGORY_CARD_MARIAGE.badgeVariant" size="small">Recommandé</Badge>
             </div>
             <div class="flex items-center text-doré text-sm font-medium">
               <span>Voir templates</span>
@@ -70,19 +70,19 @@
 
       <!-- Anniversary Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=anniversaire')">
-        <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
+        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
           <div class="aspect-[4/3] bg-gradient-to-br from-yellow-400/30 to-orange-400/20 relative">
             <img :src="annivImage" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-serif text-noir mb-2">Anniversaires</h3>
+          <div class="p-5 sm:p-6">
+            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Anniversaires</h3>
             <p class="text-sm text-gris mb-4">
               Commémorez vos étapes importantes avec joie et festivité.
             </p>
             <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">60$</div>
-              <Badge variant="primary" size="small">Standard</Badge>
+              <div class="text-doré font-bold text-lg">{{ FIXED_CARD.label }}</div>
+              <Badge variant="primary" size="small">{{ FIXED_CARD.badge }}</Badge>
             </div>
           </div>
         </div>
@@ -90,19 +90,19 @@
 
       <!-- Profile Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=profil')">
-        <div class="relative overflow-hidden rounded-lg bg-gris-clair transition-all duration-300 group-hover:shadow-xl">
+        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
           <div class="aspect-[4/3] bg-gradient-to-br from-blue-400/30 to-purple-400/20 relative">
-            <img :src="weddingImage" alt="Sites de Mariage" class="w-full h-full object-cover">
+            <img :src="profileImage" alt="Profils personnels" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-serif text-noir mb-2">Profils Personnels</h3>
+          <div class="p-5 sm:p-6">
+            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Profils Personnels</h3>
             <p class="text-sm text-gris mb-4">
               Créez votre présence en ligne avec un site personnel professionnel.
             </p>
             <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">70$</div>
-              <Badge variant="primary" size="small">Standard</Badge>
+              <div class="text-doré font-bold text-lg">{{ FIXED_CARD.label }}</div>
+              <Badge variant="primary" size="small">{{ FIXED_CARD.badge }}</Badge>
             </div>
           </div>
         </div>
@@ -146,6 +146,7 @@ import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import { CATEGORY_CARD_MEMORIAL, CATEGORY_CARD_MARIAGE, FIXED_CARD } from '@/data/pricing.js'
 
 const router = useRouter()
 

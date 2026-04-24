@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-blanc flex flex-col items-center justify-center py-16">
+  <div class="min-h-screen bg-ivoire dark:bg-zinc-950 flex flex-col items-center justify-center py-16 transition-colors duration-300">
     <!-- Logo et cercle combinés au centre -->
     <div class="relative flex flex-col items-center justify-center">
       <!-- Logo au centre -->
@@ -7,24 +7,24 @@
         <img 
           :src="logoImage" 
           alt="One Memoria" 
-          class="w-32 h-32 object-contain"
+          class="h-44 w-44 object-contain sm:h-52 sm:w-52 md:h-64 md:w-64"
         >
       </div>
       
       <!-- Loader circulaire autour du logo -->
       <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-48 h-48 border-4 border-doré/20 rounded-full"></div>
-        <div class="absolute w-48 h-48 border-4 border-doré border-t-transparent rounded-full animate-spin"></div>
-        <div class="absolute w-40 h-40 border-4 border-doré/10 rounded-full"></div>
-        <div class="absolute w-40 h-40 border-4 border-doré/30 border-b-transparent rounded-full animate-spin" style="animation-direction: reverse; animation-duration: 2s;"></div>
+        <div class="h-60 w-60 border-4 border-doré/20 rounded-full sm:h-64 sm:w-64 md:h-72 md:w-72"></div>
+        <div class="absolute h-60 w-60 border-4 border-doré border-t-transparent rounded-full animate-spin sm:h-64 sm:w-64 md:h-72 md:w-72"></div>
+        <div class="absolute h-52 w-52 border-4 border-doré/10 rounded-full sm:h-56 sm:w-56 md:h-64 md:w-64"></div>
+        <div class="absolute h-52 w-52 border-4 border-doré/30 border-b-transparent rounded-full animate-spin sm:h-56 sm:w-56 md:h-64 md:w-64" style="animation-direction: reverse; animation-duration: 2s;"></div>
       </div>
     </div>
     
     <!-- Texte One Memoria en bas avec effet clavier -->
     <div class="mt-16">
-      <h1 class="text-4xl font-serif text-noir">
+      <h1 class="text-4xl font-serif text-noir dark:text-zinc-100">
         <span class="inline-block">{{ displayedText }}</span>
-        <span class="inline-block w-0.5 h-8 bg-noir animate-pulse ml-1" v-if="showCursor"></span>
+        <span class="inline-block w-0.5 h-8 bg-noir dark:bg-zinc-300 animate-pulse ml-1" v-if="showCursor"></span>
       </h1>
     </div>
   </div>

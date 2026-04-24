@@ -1,30 +1,36 @@
 <template>
-  <div class="bg-blanc min-h-screen text-noir">
+  <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
     <!-- Header Section -->
     <Section padding="large">
       <template #header>
         <Badge variant="primary" class="mb-4">Tarifs</Badge>
-        <h1 class="text-3xl md:text-5xl font-serif text-noir mb-6">
-          Choisissez Votre
-          <span class="text-doré">Formule</span>
+        <h1 class="heading-memorial mb-6 text-[1.65rem] font-semibold leading-tight text-noir dark:text-zinc-100 sm:text-4xl md:text-5xl">
+          Choisissez votre
+          <span class="text-doré">formule</span>
         </h1>
-        <p class="text-lg text-gris max-w-3xl mx-auto">
-          Des tarifs transparents adaptés à tous les besoins. 
-          Pas de frais cachés, que de la qualité et de l'élégance.
+        <div class="divider-gold mb-8" />
+        <p class="mx-auto max-w-2xl px-1 text-base leading-relaxed text-gris dark:text-zinc-400 sm:text-lg">
+          Des tarifs clairs — pour un projet serein, sans frais cachés.
+        </p>
+        <p class="mx-auto mt-5 max-w-2xl px-1 text-sm text-noir dark:text-zinc-300 sm:text-base">
+          Sites d’anniversaire et profils personnels : tarif fixe <span class="text-doré font-semibold">{{ FIXED_PRICE_ANNIVERSAIRE_PROFIL }}</span>.
+        </p>
+        <p class="mx-auto mt-3 max-w-2xl px-1 text-sm text-noir dark:text-zinc-300 sm:text-base">
+          {{ TIER_PRICES_WHATSAPP_LINE_FR }}
         </p>
       </template>
     </Section>
 
     <!-- Pricing Cards -->
     <Section padding="large" background="light">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
         <!-- Essentiel Plan -->
         <div class="relative">
           <Card variant="outlined" hover class="h-full">
-            <div class="p-8">
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-serif text-noir mb-2">Essentiel</h3>
-                <div class="text-4xl font-bold text-noir mb-2">50$ - 80$</div>
+            <div class="p-5 sm:p-8">
+              <div class="mb-6 text-center sm:mb-8">
+                <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Essentiel</h3>
+                <div class="mb-2 text-2xl font-bold leading-snug text-noir sm:text-3xl md:text-4xl dark:text-zinc-100">{{ TIER_PRICES.essentiel }}</div>
                 <p class="text-gris">Pour les besoins simples</p>
               </div>
               
@@ -62,24 +68,24 @@
               </ul>
               
               <Button variant="outline" full-width @click="selectPlan('essentiel')">
-                Choisir cette formule
+                Commander
               </Button>
             </div>
           </Card>
         </div>
 
         <!-- Standard Plan (Most Popular) -->
-        <div class="relative">
+        <div class="relative md:pt-2">
           <!-- Popular Badge -->
-          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-            <Badge variant="gold" size="large">Le plus choisi</Badge>
+          <div class="absolute -top-3 left-1/2 z-10 -translate-x-1/2 sm:-top-4">
+            <Badge variant="gold" size="large">Recommandé</Badge>
           </div>
           
           <Card variant="elevated" hover class="h-full border-2 border-doré shadow-xl">
-            <div class="p-8">
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-serif text-noir mb-2">Standard</h3>
-                <div class="text-4xl font-bold text-doré mb-2">100$ - 150$</div>
+            <div class="p-5 pt-8 sm:p-8 sm:pt-8">
+              <div class="mb-6 text-center sm:mb-8">
+                <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Standard</h3>
+                <div class="mb-2 text-2xl font-bold leading-snug text-doré sm:text-3xl md:text-4xl">{{ TIER_PRICES.standard }}</div>
                 <p class="text-gris">Le meilleur rapport qualité-prix</p>
               </div>
               
@@ -123,7 +129,7 @@
               </ul>
               
               <Button variant="primary" full-width @click="selectPlan('standard')">
-                Choisir cette formule
+                Commander
               </Button>
             </div>
           </Card>
@@ -132,10 +138,10 @@
         <!-- Premium Plan -->
         <div class="relative">
           <Card variant="outlined" hover class="h-full">
-            <div class="p-8">
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-serif text-noir mb-2">Premium</h3>
-                <div class="text-4xl font-bold text-noir mb-2">200$ - 250$</div>
+            <div class="p-5 sm:p-8">
+              <div class="mb-6 text-center sm:mb-8">
+                <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Premium</h3>
+                <div class="mb-2 text-2xl font-bold leading-snug text-noir sm:text-3xl md:text-4xl dark:text-zinc-100">{{ TIER_PRICES.premium }}</div>
                 <p class="text-gris">Pour les projets exceptionnels</p>
               </div>
               
@@ -185,7 +191,7 @@
               </ul>
               
               <Button variant="outline" full-width @click="selectPlan('premium')">
-                Choisir cette formule
+                Commander
               </Button>
             </div>
           </Card>
@@ -196,116 +202,121 @@
     <!-- Features Comparison -->
     <Section padding="large">
       <template #header>
-        <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+        <h2 class="mb-6 font-serif text-2xl text-noir dark:text-zinc-100 sm:text-3xl md:text-4xl">
           Comparaison des
           <span class="text-doré">Fonctionnalités</span>
         </h2>
       </template>
 
-      <div class="max-w-4xl mx-auto">
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse">
+      <div class="mx-auto max-w-4xl">
+        <p class="mb-3 text-center text-xs text-gris dark:text-zinc-500 sm:hidden">
+          Faites défiler horizontalement pour comparer les formules
+        </p>
+        <div
+          class="overflow-x-auto rounded-xl border border-stone-200/90 bg-white/60 shadow-sm [-webkit-overflow-scrolling:touch] dark:border-zinc-800 dark:bg-zinc-900/50"
+        >
+          <table class="w-full min-w-[32rem] border-collapse text-sm sm:min-w-0 sm:text-base">
             <thead>
-              <tr class="border-b border-gris-clair">
-                <th class="text-left py-4 px-4 text-noir font-semibold">Fonctionnalités</th>
-                <th class="text-center py-4 px-4 text-noir font-semibold">Essentiel</th>
-                <th class="text-center py-4 px-4 text-noir font-semibold">Standard</th>
-                <th class="text-center py-4 px-4 text-noir font-semibold">Premium</th>
+              <tr class="border-b border-stone-200/90 dark:border-zinc-800">
+                <th class="py-3 pl-4 pr-2 text-left font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Fonctionnalités</th>
+                <th class="px-2 py-3 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Essentiel</th>
+                <th class="px-2 py-3 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Standard</th>
+                <th class="py-3 pr-4 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Premium</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-gris-clair">
-                <td class="py-4 px-4 text-gris">Nombre de photos</td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-noir">25 max</span>
+              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Nombre de photos</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <span class="text-noir dark:text-zinc-200">25 max</span>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-doré font-semibold">Illimité</span>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <span class="font-semibold text-doré">Illimité</span>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-doré font-semibold">Illimité</span>
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <span class="font-semibold text-doré">Illimité</span>
                 </td>
               </tr>
-              <tr class="border-b border-gris-clair">
-                <td class="py-4 px-4 text-gris">Vidéos</td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
+              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Vidéos</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-doré mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
               </tr>
-              <tr class="border-b border-gris-clair">
-                <td class="py-4 px-4 text-gris">Design personnalisé</td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
+              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Design personnalisé</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-doré mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-doré mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-              </tr>
-              <tr class="border-b border-gris-clair">
-                <td class="py-4 px-4 text-gris">Domaine personnalisé</td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-doré mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
               </tr>
-              <tr class="border-b border-gris-clair">
-                <td class="py-4 px-4 text-gris">Support technique</td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-noir">Email</span>
+              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Domaine personnalisé</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-doré font-semibold">Prioritaire</span>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <span class="text-doré font-semibold">VIP 24/7</span>
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Support technique</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <span class="text-noir dark:text-zinc-200">Email</span>
+                </td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <span class="font-semibold text-doré">Prioritaire</span>
+                </td>
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <span class="font-semibold text-doré">VIP 24/7</span>
                 </td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-gris">Maintenance</td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Maintenance</td>
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-gris mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="text-center py-4 px-4">
-                  <svg class="w-5 h-5 text-doré mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
+                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
@@ -319,19 +330,20 @@
     <!-- FAQ Section -->
     <Section padding="large" background="light">
       <template #header>
-        <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+        <h2 class="mb-6 font-serif text-2xl text-noir dark:text-zinc-100 sm:text-3xl md:text-4xl">
           Questions
           <span class="text-doré">Fréquentes</span>
         </h2>
       </template>
 
-      <div class="max-w-3xl mx-auto space-y-6">
-        <div v-for="(faq, index) in faqs" :key="index" class="border border-gris-clair rounded-lg">
+      <div class="mx-auto max-w-3xl space-y-4 sm:space-y-6">
+        <div v-for="(faq, index) in faqs" :key="index" class="overflow-hidden rounded-xl border border-stone-200/90 bg-white/40 dark:border-zinc-800 dark:bg-zinc-900/30">
           <button 
+            type="button"
             @click="toggleFaq(index)"
-            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gris-clair transition-colors"
+            class="flex w-full items-start justify-between gap-3 px-4 py-4 text-left transition-colors hover:bg-stone-100/80 dark:hover:bg-zinc-800/80 sm:items-center sm:px-6"
           >
-            <span class="font-medium text-noir">{{ faq.question }}</span>
+            <span class="font-medium leading-snug text-noir dark:text-zinc-100 sm:leading-normal">{{ faq.question }}</span>
             <svg 
               class="w-5 h-5 text-doré transition-transform" 
               :class="{ 'rotate-180': faq.open }"
@@ -341,8 +353,8 @@
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </button>
-          <div v-show="faq.open" class="px-6 pb-4">
-            <p class="text-gris">{{ faq.answer }}</p>
+          <div v-show="faq.open" class="border-t border-stone-200/80 px-4 pb-4 pt-0 dark:border-zinc-800 sm:px-6">
+            <p class="pt-3 text-sm leading-relaxed text-gris dark:text-zinc-400 sm:text-base">{{ faq.answer }}</p>
           </div>
         </div>
       </div>
@@ -353,10 +365,10 @@
       <div class="text-center max-w-4xl mx-auto">
         <Card variant="elevated">
           <div class="p-8 md:p-12">
-            <h2 class="text-3xl font-serif text-noir mb-4">
+            <h2 class="mb-4 font-serif text-3xl text-noir dark:text-zinc-100">
               Prêt à Commencer ?
             </h2>
-            <p class="text-gris mb-8">
+            <p class="mb-8 text-gris dark:text-zinc-400">
               Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -381,8 +393,25 @@ import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import {
+  TIER_PRICES,
+  FIXED_PRICE_ANNIVERSAIRE_PROFIL,
+  FAQ_ANSWER_FIXED_ANNIV_PROFIL_FR,
+  FAQ_ANSWER_MEMORIAL_MARIAGE_TARIFS_FR,
+  TIER_PRICES_WHATSAPP_LINE_FR
+} from '@/data/pricing.js'
 
 const faqs = ref([
+  {
+    question: "Quel est le tarif pour un site d'anniversaire ou un profil personnel ?",
+    answer: FAQ_ANSWER_FIXED_ANNIV_PROFIL_FR,
+    open: false
+  },
+  {
+    question: "Quel est le tarif pour un site mémorial ou de mariage ?",
+    answer: FAQ_ANSWER_MEMORIAL_MARIAGE_TARIFS_FR,
+    open: false
+  },
   {
     question: "Qu'est-ce qui est inclus dans chaque formule ?",
     answer: "Chaque formule inclut la création du site, l'hébergement pendant 1 an, et le support technique. La formule Premium inclut également la maintenance et un domaine personnalisé.",
@@ -415,9 +444,10 @@ const toggleFaq = (index) => {
 }
 
 const selectPlan = (plan) => {
+  const price = TIER_PRICES[plan]
   const message = `Bonjour One Memoria,
 
-Je suis intéressé(e) par la formule "${plan}".
+Je suis intéressé(e) par la formule "${plan}" (${price}).
 
 Pouvez-vous me donner plus d'informations ?`
 

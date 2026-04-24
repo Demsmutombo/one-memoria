@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoading" class="fixed inset-0 bg-blanc z-50 flex items-center justify-center">
+  <div v-if="isLoading" class="fixed inset-0 bg-ivoire dark:bg-zinc-950 z-50 flex items-center justify-center">
     <div class="text-center">
       <!-- Logo en très très grand -->
       <img 

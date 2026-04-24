@@ -35,13 +35,14 @@ const props = defineProps({
 defineEmits(['click'])
 
 const buttonClass = computed(() => {
-  const baseClass = 'inline-flex items-center justify-center font-medium transition-all duration-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-doré focus:ring-offset-2'
+  const baseClass =
+    'inline-flex min-h-[2.75rem] items-center justify-center font-medium transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-doré/60 focus:ring-offset-2 active:scale-[0.98] dark:focus:ring-offset-zinc-950'
   
   const variantClasses = {
-    primary: 'bg-doré text-noir hover:bg-yellow-500 shadow-sm',
-    secondary: 'bg-noir text-blanc hover:bg-gray-800 shadow-sm',
-    outline: 'border border-noir text-noir hover:bg-noir hover:text-blanc shadow-sm',
-    ghost: 'text-noir hover:bg-gris-clair'
+    primary: 'bg-doré text-noir hover:bg-doré-foncé shadow-soft hover:shadow-memorial',
+    secondary: 'bg-noir text-blanc hover:bg-gray-800 dark:hover:bg-zinc-700 shadow-sm',
+    outline: 'border border-noir dark:border-zinc-400 text-noir dark:text-zinc-100 hover:bg-noir hover:text-blanc dark:hover:bg-zinc-100 dark:hover:text-noir shadow-sm',
+    ghost: 'text-noir dark:text-zinc-200 hover:bg-gris-clair dark:hover:bg-zinc-800'
   }
   
   const sizeClasses = {

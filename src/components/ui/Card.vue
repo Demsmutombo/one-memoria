@@ -1,6 +1,6 @@
 <template>
   <div :class="cardClass">
-    <div v-if="$slots.header" class="p-6 border-b border-gris-clair">
+    <div v-if="$slots.header" class="p-6 border-b border-gris-clair dark:border-zinc-700">
       <slot name="header" />
     </div>
     
@@ -8,7 +8,7 @@
       <slot />
     </div>
     
-    <div v-if="$slots.footer" class="p-6 border-t border-gris-clair">
+    <div v-if="$slots.footer" class="p-6 border-t border-gris-clair dark:border-zinc-700">
       <slot name="footer" />
     </div>
   </div>
@@ -35,12 +35,13 @@ const props = defineProps({
 })
 
 const cardClass = computed(() => {
-  const baseClass = 'bg-blanc rounded-lg overflow-hidden transition-all duration-300'
+  const baseClass =
+    'bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden transition-all duration-300 border border-stone-200/80 dark:border-zinc-700/80'
   
   const variantClasses = {
-    default: 'border border-gris-clair',
-    elevated: 'shadow-lg',
-    outlined: 'border-2 border-noir'
+    default: 'border border-gris-clair dark:border-zinc-700',
+    elevated: 'shadow-soft hover:shadow-memorial dark:shadow-zinc-950/40',
+    outlined: 'border-2 border-noir dark:border-zinc-500'
   }
   
   const hoverClass = props.hover ? 'hover:shadow-xl hover:-translate-y-1' : ''

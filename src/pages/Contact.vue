@@ -1,16 +1,16 @@
 <template>
-  <div class="bg-blanc min-h-screen text-noir">
+  <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
     <!-- Header Section -->
     <Section padding="large">
       <template #header>
         <Badge variant="primary" class="mb-4">Contact</Badge>
-        <h1 class="text-3xl md:text-5xl font-serif text-noir mb-6">
-          Parlons de Votre
-          <span class="text-doré">Projet</span>
+        <h1 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-5xl mb-6">
+          Parlons de votre
+          <span class="text-doré">projet</span>
         </h1>
-        <p class="text-lg text-gris max-w-3xl mx-auto">
-          Nous sommes là pour répondre à toutes vos questions et vous aider à créer 
-          le site web parfait pour vos besoins.
+        <div class="divider-gold mb-8" />
+        <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          Une question, une idée — nous vous répondons avec attention et discrétion.
         </p>
       </template>
     </Section>
@@ -154,8 +154,22 @@ import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import {
+  FAQ_ANSWER_FIXED_ANNIV_PROFIL_FR,
+  FAQ_ANSWER_MEMORIAL_MARIAGE_TARIFS_FR
+} from '@/data/pricing.js'
 
 const faqs = ref([
+  {
+    question: "Quel est le tarif pour un site d'anniversaire ou un profil personnel ?",
+    answer: FAQ_ANSWER_FIXED_ANNIV_PROFIL_FR,
+    open: false
+  },
+  {
+    question: "Quel est le tarif pour un site mémorial ou de mariage ?",
+    answer: FAQ_ANSWER_MEMORIAL_MARIAGE_TARIFS_FR,
+    open: false
+  },
   {
     question: "Quelle est la durée moyenne de création d'un site ?",
     answer: "La durée varie selon la complexité : 2-4 jours pour l'Essentiel, 2-4 jours pour le Standard, et 2-4 jours pour le Premium.",
