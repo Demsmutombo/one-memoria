@@ -3,20 +3,6 @@ import { FIXED_PRICE_ANNIVERSAIRE_PROFIL, TIER_PRICES } from '@/data/pricing.js'
 export const templates = [
   // Templates Memorial
   {
-    id: 1,
-    name: 'Golden Celebration',
-    slug: 'golden-celebration',
-    category: 'memorial',
-    plan: 'essentiel',
-    isFixedPrice: false,
-    priceRange: TIER_PRICES.essentiel,
-    image: '/images/templates/memorial/memorial.jpeg',
-    demoUrl: 'https://offres-essentiel.vercel.app/',
-    description: 'Design élégant avec touches dorées pour un hommage respectueux.',
-    features: ['Biographie', 'Galerie photos', 'Hommage', 'Informations cérémonie'],
-    deliveryTime: '2 jours'
-  },
-  {
     id: 2,
     name: 'Green Leaves',
     slug: 'green-leaves',
@@ -25,7 +11,7 @@ export const templates = [
     isFixedPrice: false,
     priceRange: TIER_PRICES.standard,
     image: '/images/templates/memorial/memorial.jpeg',
-    demoUrl: 'https://offre-standard.vercel.app/',
+    demoUrl: 'https://funeraille-tamp2-premium.vercel.app/',
     description: 'Design naturel apaisant avec feuillages verts et ambiance sereine.',
     features: ['Biographie complète', 'Galerie illimitée', 'Témoignages', 'Timeline', "Livre d'or"],
     deliveryTime: '2 jours'
@@ -41,7 +27,7 @@ export const templates = [
     image: '/images/templates/memorial/memorial.jpeg',
     demoUrl: 'https://offre-premium.vercel.app/',
     description: 'Design délicat avec fleurs de cerisier, animations douces et personnalisation complète.',
-    features: ['Design personnalisé', 'Galerie vidéo', 'Animations', 'Domaine personnalisé', 'Support premium'],
+    features: ['Design personnalisé', 'Galerie vidéo', 'Animations', 'Support premium'],
     deliveryTime: '2 jours'
   },
   {
@@ -53,23 +39,9 @@ export const templates = [
     isFixedPrice: false,
     priceRange: TIER_PRICES.standard,
     image: '/images/templates/memorial/memorial.jpeg',
-    demoUrl: 'https://funeraille-tamp2-standard.vercel.app/',
+    demoUrl: 'https://funeraille-tamp2-premium.vercel.app/',
     description: 'Design sophistiqué avec effet marbre blanc et accents dorés.',
     features: ['Biographie', 'Galerie photos', 'Hommage', 'Timeline', "Livre d'or"],
-    deliveryTime: '2 jours'
-  },
-  {
-    id: 5,
-    name: 'Nature Serenity',
-    slug: 'nature-serenity',
-    category: 'memorial',
-    plan: 'essentiel',
-    isFixedPrice: false,
-    priceRange: TIER_PRICES.essentiel,
-    image: '/images/templates/memorial/memorial.jpeg',
-    demoUrl: 'https://funeraille-tamp2-essentiel.vercel.app/',
-    description: 'Design naturel avec feuillages verts pour une ambiance apaisante.',
-    features: ['Biographie', 'Galerie', 'Hommage', 'Informations cérémonie'],
     deliveryTime: '2 jours'
   },
   {
@@ -83,7 +55,7 @@ export const templates = [
     image: '/images/templates/memorial/memorial.jpeg',
     demoUrl: 'https://funeraille-tamp2-premium.vercel.app/',
     description: 'Design spirituel avec coucher de soleil et symbole de croix.',
-    features: ['Design personnalisé', 'Galerie vidéo', 'Animations', 'Domaine personnalisé', 'Support premium'],
+    features: ['Design personnalisé', 'Galerie vidéo', 'Animations', 'Support premium'],
     deliveryTime: '2 jours'
   },
 
@@ -97,7 +69,7 @@ export const templates = [
     isFixedPrice: false,
     priceRange: TIER_PRICES.standard,
     image: '/images/templates/mariage/wedding.jpeg',
-    demoUrl: 'https://jean-shekinah.onememoria.com/',
+    demoUrl: 'https://couple-kalengayi.onememoria.com/',
     description: "Design romantique élégant pour célébrer votre amour.",
     features: ["Histoire d'amour", 'Galerie photos', 'Infos cérémonie', 'RSVP', 'Liste de cadeaux'],
     deliveryTime: '2 jours'
@@ -113,24 +85,9 @@ export const templates = [
     image: '/images/templates/mariage/wedding2.jpeg',
     demoUrl: 'https://jean-shekinah.onememoria.com/',
     description: 'Design haut de gamme avec animations sophistiquées et personnalisation complète.',
-    features: ['Design sur mesure', 'Galerie vidéo', 'Animations', 'Domaine personnalisé', 'Support VIP'],
+    features: ['Design sur mesure', 'Galerie vidéo', 'Animations', 'Support VIP'],
     deliveryTime: '2 jours'
   },
-  {
-    id: 9,
-    name: 'Garden Wedding',
-    slug: 'garden-wedding',
-    category: 'mariage',
-    plan: 'essentiel',
-    isFixedPrice: false,
-    priceRange: TIER_PRICES.essentiel,
-    image: '/images/templates/mariage/wedding3.jpeg',
-    demoUrl: 'https://jean-shekinah.onememoria.com/',
-    description: 'Design champêtre avec éléments floraux et ambiance naturelle.',
-    features: ['Histoire', 'Galerie', 'Infos cérémonie', 'RSVP'],
-    deliveryTime: '2 jours'
-  },
-
   // Templates Anniversaire
   {
     id: 10,
@@ -143,7 +100,7 @@ export const templates = [
     image: '/images/templates/anniversaire/anniv4.jpeg',
     demoUrl: 'https://nellykuntwakibambe.vercel.app',
     description: 'Design personnalisé pour célébrations mémorables.',
-    features: ['Illimité', 'Animations', 'Custom design', 'Galerie vidéo', 'Domaine personnalisé'],
+    features: ['Illimité', 'Animations', 'Custom design', 'Galerie vidéo'],
     deliveryTime: '2 jours'
   },
 

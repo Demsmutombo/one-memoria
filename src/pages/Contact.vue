@@ -172,7 +172,7 @@ const faqs = ref([
   },
   {
     question: "Quelle est la durée moyenne de création d'un site ?",
-    answer: "La durée varie selon la complexité : 2-4 jours pour l'Essentiel, 2-4 jours pour le Standard, et 2-4 jours pour le Premium.",
+    answer: "La durée varie selon la complexité : 2-4 jours pour le Standard, et 2-4 jours pour le Premium.",
     open: false
   },
   {

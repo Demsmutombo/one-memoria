@@ -307,7 +307,6 @@ const getFeatureDescription = (feature) => {
     'Custom design': 'Design entièrement personnalisé selon vos besoins',
     'Design sur mesure': 'Création graphique personnalisée',
     'Animations': 'Animations subtiles et interactions modernes',
-    'Domaine personnalisé': 'Votre propre nom de domaine (.com, .fr, etc)',
     'Support premium': 'Support prioritaire et assistance dédiée',
     'Support VIP': 'Service VIP avec assistance prioritaire 24/7',
     'Illimité': 'Fonctionnalités et stockage sans limites',

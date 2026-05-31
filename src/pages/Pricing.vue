@@ -23,57 +23,7 @@
 
     <!-- Pricing Cards -->
     <Section padding="large" background="light">
-      <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
-        <!-- Essentiel Plan -->
-        <div class="relative">
-          <Card variant="outlined" hover class="h-full">
-            <div class="p-5 sm:p-8">
-              <div class="mb-6 text-center sm:mb-8">
-                <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Essentiel</h3>
-                <div class="mb-2 text-2xl font-bold leading-snug text-noir sm:text-3xl md:text-4xl dark:text-zinc-100">{{ TIER_PRICES.essentiel }}</div>
-                <p class="text-gris">Pour les besoins simples</p>
-              </div>
-              
-              <ul class="space-y-4 mb-8">
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gris">Biographie complète</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gris">Galerie photos (25 max)</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gris">Design élégant</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gris">Responsive mobile</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gris">Formulaire de contact</span>
-                </li>
-              </ul>
-              
-              <Button variant="outline" full-width @click="selectPlan('essentiel')">
-                Commander
-              </Button>
-            </div>
-          </Card>
-        </div>
-
+      <div class="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
         <!-- Standard Plan (Most Popular) -->
         <div class="relative md:pt-2">
           <!-- Popular Badge -->
@@ -94,7 +44,13 @@
                   <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <span class="text-gris">Tout l'essentiel +</span>
+                  <span class="text-gris">Biographie complète</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gris">Design élégant et responsive</span>
                 </li>
                 <li class="flex items-start">
                   <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -174,12 +130,6 @@
                   <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                   </svg>
-                  <span class="text-gris">Domaine personnalisé</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
                   <span class="text-gris">Support VIP 24/7</span>
                 </li>
                 <li class="flex items-start">
@@ -215,11 +165,10 @@
         <div
           class="overflow-x-auto rounded-xl border border-stone-200/90 bg-white/60 shadow-sm [-webkit-overflow-scrolling:touch] dark:border-zinc-800 dark:bg-zinc-900/50"
         >
-          <table class="w-full min-w-[32rem] border-collapse text-sm sm:min-w-0 sm:text-base">
+          <table class="w-full min-w-[24rem] border-collapse text-sm sm:min-w-0 sm:text-base">
             <thead>
               <tr class="border-b border-stone-200/90 dark:border-zinc-800">
                 <th class="py-3 pl-4 pr-2 text-left font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Fonctionnalités</th>
-                <th class="px-2 py-3 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Essentiel</th>
                 <th class="px-2 py-3 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Standard</th>
                 <th class="py-3 pr-4 text-center font-semibold text-noir dark:text-zinc-100 sm:px-4 sm:py-4">Premium</th>
               </tr>
@@ -227,9 +176,6 @@
             <tbody>
               <tr class="border-b border-stone-200/80 dark:border-zinc-800">
                 <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Nombre de photos</td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <span class="text-noir dark:text-zinc-200">25 max</span>
-                </td>
                 <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
                   <span class="font-semibold text-doré">Illimité</span>
                 </td>
@@ -244,11 +190,6 @@
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
                 <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
                   <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
@@ -258,31 +199,8 @@
               <tr class="border-b border-stone-200/80 dark:border-zinc-800">
                 <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Design personnalisé</td>
                 <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
                   <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-                <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-doré" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-              </tr>
-              <tr class="border-b border-stone-200/80 dark:border-zinc-800">
-                <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Domaine personnalisé</td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                   </svg>
                 </td>
                 <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
@@ -294,9 +212,6 @@
               <tr class="border-b border-stone-200/80 dark:border-zinc-800">
                 <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Support technique</td>
                 <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <span class="text-noir dark:text-zinc-200">Email</span>
-                </td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
                   <span class="font-semibold text-doré">Prioritaire</span>
                 </td>
                 <td class="py-3 pr-4 text-center sm:px-4 sm:py-4">
@@ -305,11 +220,6 @@
               </tr>
               <tr>
                 <td class="py-3 pl-4 pr-2 text-gris sm:px-4 sm:py-4">Maintenance</td>
-                <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
-                  <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </td>
                 <td class="px-2 py-3 text-center sm:px-4 sm:py-4">
                   <svg class="mx-auto h-5 w-5 text-gris" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -414,7 +324,7 @@ const faqs = ref([
   },
   {
     question: "Qu'est-ce qui est inclus dans chaque formule ?",
-    answer: "Chaque formule inclut la création du site, l'hébergement pendant 1 an, et le support technique. La formule Premium inclut également la maintenance et un domaine personnalisé.",
+    answer: "Chaque formule inclut la création du site, l'hébergement pendant 1 an, et le support technique. La formule Premium inclut également la maintenance.",
     open: false
   },
   {
@@ -424,7 +334,7 @@ const faqs = ref([
   },
   {
     question: "Combien de temps prend la création du site ?",
-    answer: "La durée varie selon la complexité : 3-5 jours pour l'Essentiel, 5-7 jours pour le Standard, et 7-10 jours pour le Premium.",
+    answer: "La durée varie selon la complexité : 5-7 jours pour le Standard, et 7-10 jours pour le Premium.",
     open: false
   },
   {

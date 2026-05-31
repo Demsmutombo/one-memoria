@@ -16,7 +16,7 @@
     <!-- Contenu de l'application -->
     <div v-show="!showGlobalLoader">
       <Navbar />
-      <main>
+      <main class="pt-[3.75rem] sm:pt-[4.25rem] md:pt-[4.5rem]">
         <router-view />
       </main>
       <Footer />

@@ -16,12 +16,9 @@
       <!-- Memorial Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=memorial')">
         <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-noir/80 to-noir/40 relative">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-16 h-16 text-doré" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path>
-              </svg>
-            </div>
+          <div class="aspect-[4/3] bg-gradient-to-br from-noir/80 to-noir/40 relative overflow-hidden">
+            <img :src="memorialImage" alt="Sites Mémoriaux" class="h-full w-full object-cover">
+            <div class="absolute inset-0 bg-noir/20"></div>
           </div>
           <div class="p-5 sm:p-6">
             <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Sites Mémoriaux</h3>
@@ -45,8 +42,8 @@
       <!-- Wedding Service -->
       <div class="group cursor-pointer" @click="$router.push('/templates?category=mariage')">
         <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-doré/40 to-doré/20 relative">
-            <img :src="memorialImage" alt="Sites Mémoriaux" class="w-full h-full object-cover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-doré/40 to-doré/20 relative overflow-hidden">
+            <img :src="weddingImage" alt="Sites de Mariage" class="h-full w-full object-cover">
             <div class="absolute inset-0 bg-noir/20"></div>
           </div>
           <div class="p-5 sm:p-6">

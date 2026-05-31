@@ -19,54 +19,7 @@
       </p>
     </template>
 
-    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
-      <!-- Essentiel Plan -->
-      <div class="relative">
-        <Card variant="outlined" hover class="h-full">
-          <div class="p-5 sm:p-8">
-            <div class="mb-6 text-center sm:mb-8">
-              <div class="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-lg sm:h-24 sm:w-24">
-                <img :src="memorialImage" alt="Essentiel" class="h-full w-full object-cover">
-              </div>
-              <h3 class="mb-2 font-serif text-xl text-noir dark:text-zinc-100 sm:text-2xl">Essentiel</h3>
-              <div class="mb-2 text-xl font-bold leading-snug text-noir dark:text-zinc-100 sm:text-2xl md:text-3xl">{{ TIER_PRICES.essentiel }}</div>
-              <p class="text-gris">Pour les besoins simples</p>
-            </div>
-            
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gris">Biographie complète</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gris">Galerie photos (25 max)</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gris">Design élégant</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gris">Responsive mobile</span>
-              </li>
-            </ul>
-            
-            <Button variant="outline" full-width @click="selectPlan('essentiel')">
-              Commander
-            </Button>
-          </div>
-        </Card>
-      </div>
-
+    <div class="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
       <!-- Standard Plan (Most Popular) -->
       <div class="relative md:pt-2">
         <!-- Popular Badge -->
@@ -90,7 +43,7 @@
                 <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                 </svg>
-                <span class="text-gris">Tout l'essentiel +</span>
+                <span class="text-gris">Biographie complète</span>
               </li>
               <li class="flex items-start">
                 <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -167,12 +120,6 @@
                 <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                 </svg>
-                <span class="text-gris">Domaine personnalisé</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-doré mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
                 <span class="text-gris">Support VIP</span>
               </li>
             </ul>
@@ -203,7 +150,6 @@ import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Section from '@/components/ui/Section.vue'
-import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
 import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
 import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
