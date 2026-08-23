@@ -1,37 +1,21 @@
 <template>
   <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
-    <!-- Header Section -->
-    <Section padding="large">
-      <template #header>
-        <Badge variant="primary" class="mb-4">Tarifs</Badge>
-        <h1 class="heading-memorial mb-6 text-[1.65rem] font-semibold leading-tight text-noir dark:text-zinc-100 sm:text-4xl md:text-5xl">
-          Choisissez votre
-          <span class="text-doré">formule</span>
-        </h1>
-        <div class="divider-gold mb-8" />
-        <p class="mx-auto max-w-2xl px-1 text-base leading-relaxed text-gris dark:text-zinc-400 sm:text-lg">
-          Des tarifs clairs — pour un projet serein, sans frais cachés.
-        </p>
-        <p class="mx-auto mt-5 max-w-2xl px-1 text-sm text-noir dark:text-zinc-300 sm:text-base">
-          Sites d’anniversaire et profils personnels : tarif fixe <span class="text-doré font-semibold">{{ FIXED_PRICE_ANNIVERSAIRE_PROFIL }}</span>.
-        </p>
-        <p class="mx-auto mt-3 max-w-2xl px-1 text-sm text-noir dark:text-zinc-300 sm:text-base">
-          {{ TIER_PRICES_WHATSAPP_LINE_FR }}
-        </p>
-      </template>
-    </Section>
+    <PageHero
+      kicker="Tarifs"
+      title="Choisissez votre formule"
+      :image="pricingHero"
+    >
+      Des tarifs clairs — pour un projet serein, sans frais cachés.
+      Sites d’anniversaire et profils personnels : tarif fixe {{ FIXED_PRICE_ANNIVERSAIRE_PROFIL }}.
+      {{ TIER_PRICES_WHATSAPP_LINE_FR }}
+    </PageHero>
 
     <!-- Pricing Cards -->
     <Section padding="large" background="light">
       <div class="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
-        <!-- Standard Plan (Most Popular) -->
-        <div class="relative md:pt-2">
-          <!-- Popular Badge -->
-          <div class="absolute -top-3 left-1/2 z-10 -translate-x-1/2 sm:-top-4">
-            <Badge variant="gold" size="large">Recommandé</Badge>
-          </div>
-          
-          <Card variant="elevated" hover class="h-full border-2 border-doré shadow-xl">
+        <!-- Standard Plan -->
+        <div class="relative">
+          <Card variant="elevated" hover class="h-full">
             <div class="p-5 pt-8 sm:p-8 sm:pt-8">
               <div class="mb-6 text-center sm:mb-8">
                 <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Standard</h3>
@@ -92,9 +76,12 @@
         </div>
 
         <!-- Premium Plan -->
-        <div class="relative">
-          <Card variant="outlined" hover class="h-full">
-            <div class="p-5 sm:p-8">
+        <div class="relative md:pt-2">
+          <div class="absolute -top-3 left-1/2 z-10 -translate-x-1/2 sm:-top-4">
+            <Badge variant="gold" size="large">Recommandé</Badge>
+          </div>
+          <Card variant="elevated" hover class="h-full ring-1 ring-doré">
+            <div class="p-5 pt-8 sm:p-8">
               <div class="mb-6 text-center sm:mb-8">
                 <h3 class="mb-2 font-serif text-xl text-noir sm:text-2xl dark:text-zinc-100">Premium</h3>
                 <div class="mb-2 text-2xl font-bold leading-snug text-noir sm:text-3xl md:text-4xl dark:text-zinc-100">{{ TIER_PRICES.premium }}</div>
@@ -298,11 +285,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import PageHero from '@/components/ui/PageHero.vue'
 import Section from '@/components/ui/Section.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
-import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import { sendGeneralWhatsApp, sendPlanWhatsApp } from '@/services/whatsapp.js'
+import { media } from '@/utils/templateMedia.js'
 import {
   TIER_PRICES,
   FIXED_PRICE_ANNIVERSAIRE_PROFIL,
@@ -310,6 +299,8 @@ import {
   FAQ_ANSWER_MEMORIAL_MARIAGE_TARIFS_FR,
   TIER_PRICES_WHATSAPP_LINE_FR
 } from '@/data/pricing.js'
+
+const pricingHero = media.wedding2
 
 const faqs = ref([
   {
@@ -354,15 +345,7 @@ const toggleFaq = (index) => {
 }
 
 const selectPlan = (plan) => {
-  const price = TIER_PRICES[plan]
-  const message = `Bonjour One Memoria,
-
-Je suis intéressé(e) par la formule "${plan}" (${price}).
-
-Pouvez-vous me donner plus d'informations ?`
-
-  const encodedMessage = encodeURIComponent(message)
-  window.open(`https://wa.me/243991683269?text=${encodedMessage}`, '_blank')
+  sendPlanWhatsApp(plan, TIER_PRICES[plan])
 }
 
 const sendToWhatsApp = () => {

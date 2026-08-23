@@ -1,19 +1,11 @@
 <template>
   <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
-    <!-- Header Section -->
-    <Section padding="large">
-      <template #header>
-        <Badge variant="primary" class="mb-4">Templates</Badge>
-        <h1 class="heading-memorial mb-6 text-[1.65rem] font-semibold leading-tight text-noir dark:text-zinc-100 sm:text-4xl md:text-5xl">
-          Découvrez nos
-          <span class="text-doré">templates</span>
-        </h1>
-        <div class="divider-gold mb-8" />
-        <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          Des bases sobres et raffinées, à personnaliser selon votre histoire et votre cérémonie.
-        </p>
-      </template>
-    </Section>
+    <PageHero
+      kicker="Réalisations"
+      title="Découvrez nos espaces"
+      subtitle="Des bases sobres et raffinées, à personnaliser selon votre histoire et votre cérémonie."
+      :image="templatesHero"
+    />
 
     <!-- Filtres + grille templates -->
     <Section padding="normal" background="light">
@@ -100,12 +92,14 @@
             class="group cursor-pointer"
             @click="openDemo(template.demoUrl)"
           >
-            <div class="relative overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-memorial dark:border dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-noir/10 to-doré/10">
+            <div class="relative overflow-hidden bg-white shadow-soft transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-memorial dark:border dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="relative aspect-[16/10] overflow-hidden bg-noir">
                 <img
-                  :src="getTemplateImage(template.category, template.name)"
+                  :src="getTemplateImage(template)"
                   :alt="template.name"
-                  class="h-full w-full object-cover"
+                  class="img-editorial group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 >
                 <div class="absolute inset-0 bg-noir/20"></div>
                 <div class="absolute left-4 top-4">
@@ -209,7 +203,7 @@
     <!-- CTA Section -->
     <Section padding="large" background="light">
       <div class="text-center max-w-4xl mx-auto">
-        <h2 class="text-3xl font-serif text-noir mb-4">
+        <h2 class="mb-4 font-serif text-3xl text-noir dark:text-zinc-100">
           Prêt à Créer Votre Site ?
         </h2>
         <p class="text-gris mb-8">
@@ -230,8 +224,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import PageHero from '@/components/ui/PageHero.vue'
 import Section from '@/components/ui/Section.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
@@ -241,14 +236,9 @@ import {
   TIER_PRICES_WHATSAPP_LINE_FR,
   FIXED_PRICE_ANNIVERSAIRE_PROFIL
 } from '@/data/pricing.js'
+import { getTemplateImage, getCategoryLabel, getPlanLabel, media } from '@/utils/templateMedia.js'
 
-// Import all template images
-import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
-import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
-import wedding2Image from '@/assets/images/templates/mariage/wedding2.jpeg'
-import wedding3Image from '@/assets/images/templates/mariage/wedding3.jpeg'
-import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
-import profileImage from '@/assets/images/templates/profil/profile3.jpeg'
+const templatesHero = media.wedding
 
 const route = useRoute()
 const router = useRouter()
@@ -261,12 +251,13 @@ const showPlanFilters = computed(() => {
   return cat === 'all' || cat === 'memorial' || cat === 'mariage'
 })
 
-// Initialize filters from URL params
-onMounted(() => {
-  if (route.query.category) {
-    selectedCategory.value = route.query.category
-  }
-})
+const applyCategoryFromRoute = () => {
+  selectedCategory.value = route.query.category || 'all'
+}
+
+onMounted(applyCategoryFromRoute)
+
+watch(() => route.query.category, applyCategoryFromRoute)
 
 const filteredTemplates = computed(() => {
   let filtered = templates
@@ -297,45 +288,6 @@ const filteredTemplates = computed(() => {
 
   return filtered
 })
-
-const getCategoryLabel = (category) => {
-  const labels = {
-    memorial: 'Mémorial',
-    mariage: 'Mariage',
-    anniversaire: 'Anniversaire',
-    profil: 'Profil'
-  }
-  return labels[category] || category
-}
-
-const getTemplateImage = (category, templateName) => {
-  // Map templates to their actual images that exist
-  const templateImages = {
-    memorial: {
-      'Golden Celebration': memorialImage,
-      'Green Leaves': memorialImage,
-      'Cherry Blossoms': memorialImage
-    },
-    mariage: {
-      'Romantic Wedding': weddingImage,
-      'Elegant Union': wedding2Image,
-      'Garden Wedding': wedding3Image
-    },
-    anniversaire: {
-      'Premium Anniversary': annivImage
-    },
-    profil: {
-      'Professional Profile': profileImage
-    }
-  }
-  
-  return templateImages[category]?.[templateName] || memorialImage
-}
-
-const getPlanLabel = (plan) => {
-  const labels = { standard: 'Standard', premium: 'Premium' }
-  return labels[plan] || plan
-}
 
 const filterByCategory = (category) => {
   selectedCategory.value = category

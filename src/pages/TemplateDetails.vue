@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
+  <div class="bg-ivoire dark:bg-zinc-950 min-h-screen pt-16 text-noir dark:text-zinc-100 transition-colors duration-300 sm:pt-20">
     <!-- Loading State -->
     <div v-if="!template" class="text-center py-16">
       <div class="max-w-md mx-auto">
@@ -16,7 +16,7 @@
         <svg class="w-16 h-16 text-gris mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
         </svg>
-        <h3 class="text-xl font-serif text-noir mb-2">Template non trouvé</h3>
+        <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-2">Template non trouvé</h3>
         <p class="text-gris mb-4">
           Le template que vous recherchez n'existe pas.
         </p>
@@ -120,8 +120,8 @@
                   <div class="aspect-[4/3] bg-gradient-to-br from-doré/20 to-blanc relative">
                     <!-- Template Preview -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center px-8">
-                      <img :src="template.image" :alt="template.name" class="w-full h-full object-cover rounded-lg mb-4">
-                      <h3 class="text-2xl font-serif text-noir mb-3">{{ template.name }}</h3>
+                      <img :src="getTemplateImage(template)" :alt="template.name" class="w-full h-full object-cover rounded-lg mb-4">
+                      <h3 class="text-2xl font-serif text-noir dark:text-zinc-100 mb-3">{{ template.name }}</h3>
                       <div class="w-20 h-1 bg-doré mb-4"></div>
                       <p class="text-sm text-gris text-center italic mb-6">
                         "{{ template.description }}"
@@ -152,7 +152,7 @@
       <!-- Features Section -->
       <Section padding="large" background="light">
         <template #header>
-          <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+          <h2 class="text-3xl md:text-4xl font-serif text-noir dark:text-zinc-100 mb-6">
             Fonctionnalités
             <span class="text-doré">Incluses</span>
           </h2>
@@ -170,7 +170,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-1">{{ feature }}</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-1">{{ feature }}</h3>
               <p class="text-sm text-gris">
                 {{ getFeatureDescription(feature) }}
               </p>
@@ -182,7 +182,7 @@
       <!-- Process Section -->
       <Section padding="large">
         <template #header>
-          <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+          <h2 class="text-3xl md:text-4xl font-serif text-noir dark:text-zinc-100 mb-6">
             Comment Ça
             <span class="text-doré">Marche</span>
           </h2>
@@ -193,7 +193,7 @@
             <div class="w-16 h-16 bg-doré rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-noir">1</span>
             </div>
-            <h3 class="text-xl font-serif text-noir mb-2">Choisissez</h3>
+            <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-2">Choisissez</h3>
             <p class="text-gris">Sélectionnez ce template et contactez-nous</p>
           </div>
           
@@ -201,7 +201,7 @@
             <div class="w-16 h-16 bg-doré rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-noir">2</span>
             </div>
-            <h3 class="text-xl font-serif text-noir mb-2">Personnalisez</h3>
+            <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-2">Personnalisez</h3>
             <p class="text-gris">Nous adaptons le design à vos besoins</p>
           </div>
           
@@ -209,7 +209,7 @@
             <div class="w-16 h-16 bg-doré rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-noir">3</span>
             </div>
-            <h3 class="text-xl font-serif text-noir mb-2">Lancez</h3>
+            <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-2">Lancez</h3>
             <p class="text-gris">Votre site est en ligne et fonctionnel</p>
           </div>
         </div>
@@ -220,7 +220,7 @@
         <div class="text-center max-w-4xl mx-auto">
           <Card variant="elevated">
             <div class="p-8 md:p-12">
-              <h2 class="text-3xl font-serif text-noir mb-4">
+              <h2 class="text-3xl font-serif text-noir dark:text-zinc-100 mb-4">
                 Prêt à Commencer ?
               </h2>
               <p class="text-gris mb-8">
@@ -254,6 +254,7 @@ import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import { getTemplateBySlug } from '@/data/templates.js'
 import { sendToWhatsApp } from '@/services/whatsapp.js'
+import { getTemplateImage, getCategoryLabel } from '@/utils/templateMedia.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -269,16 +270,6 @@ onMounted(() => {
     router.push('/templates')
   }
 })
-
-const getCategoryLabel = (category) => {
-  const labels = {
-    memorial: 'Mémorial',
-    mariage: 'Mariage',
-    anniversaire: 'Anniversaire',
-    profil: 'Profil'
-  }
-  return labels[category] || category
-}
 
 const getFeatureDescription = (feature) => {
   const descriptions = {

@@ -1,10 +1,10 @@
 <template>
   <section :class="sectionClass">
     <div class="container-custom">
-      <div v-if="$slots.header" class="mb-8 text-center sm:mb-10 md:mb-12">
+      <div v-if="$slots.header" class="mb-12 max-w-2xl sm:mb-14 md:mb-16" v-reveal>
         <slot name="header" />
       </div>
-      
+
       <div :class="contentClass">
         <slot />
       </div>
@@ -36,21 +36,18 @@ const sectionClass = computed(() => {
   const paddingClasses = {
     none: '',
     small: 'py-10 sm:py-12',
-    normal: 'py-12 sm:py-16 lg:py-24',
-    large: 'py-16 sm:py-20 lg:py-28 xl:py-32'
+    normal: 'py-16 sm:py-20 lg:py-24',
+    large: 'py-20 sm:py-24 lg:py-28'
   }
-  
+
   const backgroundClasses = {
-    default: 'bg-ivoire dark:bg-zinc-950',
-    light: 'bg-stone-100/90 dark:bg-zinc-900',
+    default: 'bg-ivoire text-noir dark:bg-zinc-950 dark:text-zinc-100',
+    light: 'bg-white text-noir dark:bg-zinc-900 dark:text-zinc-100',
     dark: 'bg-noir text-blanc',
-    hero: 'bg-memorial-mesh dark:bg-zinc-950'
+    hero: 'bg-ivoire text-noir dark:bg-zinc-950 dark:text-zinc-100'
   }
-  
-  return [
-    paddingClasses[props.padding],
-    backgroundClasses[props.background]
-  ].join(' ')
+
+  return [paddingClasses[props.padding], backgroundClasses[props.background]].join(' ')
 })
 
 const contentClass = computed(() => {

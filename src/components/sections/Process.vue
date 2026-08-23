@@ -1,189 +1,72 @@
 <template>
-  <Section padding="large" background="light">
+  <Section padding="large">
     <template #header>
-      <Badge variant="primary" class="mb-4">Notre processus</Badge>
-      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
-        Simple et
-        <span class="text-doré">efficace</span>
-      </h2>
-      <div class="divider-gold mb-8" />
-      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-        De votre premier message à la mise en ligne, chaque étape est claire — pour un projet serein,
-        comme il se doit.
-      </p>
+      <p class="kicker mb-4">Processus</p>
+      <h2 class="heading-memorial text-3xl md:text-5xl">Quatre étapes. Une histoire.</h2>
     </template>
 
-    <div class="max-w-4xl mx-auto">
-      <!-- Process Timeline -->
-      <div class="relative">
-        <!-- Timeline Line -->
-        <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-doré/20"></div>
-        
-        <!-- Process Steps -->
-        <div class="space-y-12">
-          <div 
-            v-for="(step, index) in processSteps" 
-            :key="index"
-            class="relative flex items-center"
-            :class="index % 2 === 0 ? 'md:flex-row-reverse' : ''"
-          >
-            <!-- Step Number -->
-            <div class="flex-shrink-0 w-16 h-16 bg-doré rounded-full flex items-center justify-center text-noir font-bold text-xl z-10">
-              {{ index + 1 }}
-            </div>
-            
-            <!-- Step Content -->
-            <div class="ml-6 md:ml-0 md:flex-1 md:mx-12">
-              <Card variant="elevated" hover>
-                <div class="p-6">
-                  <h3 class="text-xl font-serif text-noir mb-3">{{ step.title }}</h3>
-                  <p class="text-gris mb-4">{{ step.description }}</p>
-                  
-                  <!-- Step Details -->
-                  <div v-if="step.details" class="space-y-2">
-                    <div 
-                      v-for="detail in step.details" 
-                      :key="detail"
-                      class="flex items-start"
-                    >
-                      <svg class="w-4 h-4 text-doré mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                      </svg>
-                      <span class="text-sm text-gris">{{ detail }}</span>
-                    </div>
-                  </div>
-                  
-                  <!-- Duration -->
-                  <div class="mt-4 flex items-center text-sm text-doré">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
-                    </svg>
-                    {{ step.duration }}
-                  </div>
-                </div>
-              </Card>
-            </div>
+    <div class="relative">
+      <div class="absolute left-4 top-0 hidden h-full w-px bg-doré/25 md:left-1/2 md:block" aria-hidden="true" />
+      <ol class="space-y-10 md:space-y-16">
+        <li
+          v-for="(step, index) in steps"
+          :key="step.title"
+          class="grid items-center gap-6 md:grid-cols-2 md:gap-16"
+          v-reveal="{ delay: 40 }"
+        >
+          <div :class="index % 2 === 1 ? 'md:order-2' : ''">
+            <p class="font-serif text-6xl text-doré/50 md:text-7xl">{{ step.number }}</p>
+            <h3 class="mt-3 font-serif text-2xl md:text-3xl">{{ step.title }}</h3>
+            <p class="mt-3 max-w-md text-sm leading-relaxed text-gris">{{ step.description }}</p>
           </div>
-        </div>
-      </div>
+          <figure :class="['overflow-hidden rounded-[1.4rem]', index % 2 === 1 ? 'md:order-1' : '']">
+            <img
+              :src="step.image"
+              :alt="step.title"
+              class="aspect-[16/10] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
+        </li>
+      </ol>
     </div>
 
-    <!-- CTA Section -->
-    <div class="mt-16 text-center">
-      <Card variant="elevated" class="max-w-4xl mx-auto">
-        <div class="p-8 md:p-12">
-          <h3 class="text-2xl md:text-3xl font-serif text-noir mb-4">
-            Prêt à Commencer ?
-          </h3>
-          <p class="text-gris mb-8 max-w-2xl mx-auto">
-            Le processus commence par une simple conversation. 
-            Contactez-nous dès aujourd'hui pour discuter de votre projet.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="large" @click="sendToWhatsApp">
-              Démarrer le Processus
-            </Button>
-            <Button variant="outline" size="large" @click="$router.push('/process')">
-              En Savoir Plus
-            </Button>
-          </div>
-        </div>
-      </Card>
+    <div class="mt-14" v-reveal>
+      <Button variant="outline" @click="$router.push('/process')">Voir le processus détaillé</Button>
     </div>
   </Section>
 </template>
 
 <script setup>
-import Button from '@/components/ui/Button.vue'
-import Card from '@/components/ui/Card.vue'
-import Badge from '@/components/ui/Badge.vue'
 import Section from '@/components/ui/Section.vue'
-import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import Button from '@/components/ui/Button.vue'
+import { media } from '@/utils/templateMedia.js'
 
-const processSteps = [
+const steps = [
   {
-    title: "Choisir votre template",
-    description: "Explorez notre collection de templates et choisissez celui qui correspond à votre vision.",
-    details: [
-      "Parcourez par catégorie",
-      "Voir les démos en direct",
-      "Comparer les fonctionnalités"
-    ],
-    duration: "15-30 minutes"
+    number: '01',
+    title: 'Vous partagez votre histoire',
+    description: 'Photos, dates, mots, souvenirs : vous nous confiez ce qui compte. Nous écoutons avec attention.',
+    image: media.anniv
   },
   {
-    title: "Contactez-nous",
-    description: "Discutez de votre projet avec notre équipe via WhatsApp pour définir vos besoins.",
-    details: [
-      "Consultation gratuite",
-      "Personnalisation du template",
-      "Devis personnalisé"
-    ],
-    duration: "30-45 minutes"
+    number: '02',
+    title: 'Nous concevons votre expérience',
+    description: 'Nous choisissons le ton, le rythme et la mise en page qui honorent votre récit — jamais un modèle générique figé.',
+    image: media.wedding2
   },
   {
-    title: "Paiement 50%",
-    description: "Effectuez un acompte de 50% pour démarrer le développement de votre site.",
-    details: [
-      "Paiement sécurisé",
-      "Facture détaillée",
-      "Confirmation immédiate"
-    ],
-    duration: "5 minutes"
+    number: '03',
+    title: 'Nous donnons vie à votre espace',
+    description: 'Galerie, textes, parcours : tout est assemblé, peaufiné, puis soumis à votre regard avant la mise en ligne.',
+    image: media.memorial
   },
   {
-    title: "Formulaire client",
-    description: "Remplissez notre formulaire détaillé avec toutes les informations nécessaires.",
-    details: [
-      "Informations de base",
-      "Photos et vidéos",
-      "Préférences de design"
-    ],
-    duration: "20-30 minutes"
-  },
-  {
-    title: "Création du site",
-    description: "Notre équipe développe votre site personnalisé selon vos spécifications.",
-    details: [
-      "Développement professionnel",
-      "Intégration de contenu",
-      "Tests de qualité"
-    ],
-    duration: "2-4 jours"
-  },
-  {
-    title: "Preview et validation",
-    description: "Recevez un lien preview pour consulter et valider votre site avant livraison finale.",
-    details: [
-      "Lien preview privé",
-      "Demandes de modifications",
-      "Validation finale"
-    ],
-    duration: "1-2 jours"
-  },
-  {
-    title: "Paiement final",
-    description: "Effectuez le paiement du solde (50%) avant la livraison finale.",
-    details: [
-      "Paiement sécurisé",
-      "Facture finale",
-      "Préparation livraison"
-    ],
-    duration: "5 minutes"
-  },
-  {
-    title: "Livraison finale",
-    description: "Recevez votre site web complet avec tous les accès et documentation.",
-    details: [
-      "Site en ligne",
-      "Accès administrateur",
-      "Support technique"
-    ],
-    duration: "Immédiat"
+    number: '04',
+    title: 'Vous partagez avec le monde',
+    description: 'Votre espace devient un lieu accessible, élégant et durable — à transmettre à ceux que vous aimez.',
+    image: media.wedding3
   }
 ]
-
-const sendToWhatsApp = () => {
-  sendGeneralWhatsApp()
-}
 </script>

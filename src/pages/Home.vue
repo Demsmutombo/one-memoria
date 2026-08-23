@@ -1,23 +1,27 @@
 <template>
-  <div class="bg-ivoire dark:bg-zinc-950 text-noir dark:text-zinc-100 transition-colors duration-300">
+  <div class="bg-ivoire text-noir transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-100">
     <Hero />
-    <Importance />
     <Services />
-    <TemplatesPreview />
-    <PricingPreview />
+    <Why />
     <Process />
+    <TemplatesPreview />
+    <Importance />
+    <PricingPreview />
     <Testimonials />
+    <Trust />
     <CTA />
   </div>
 </template>
 
 <script setup>
 import Hero from '@/components/sections/Hero.vue'
-import Importance from '@/components/sections/Importance.vue'
 import Services from '@/components/sections/Services.vue'
-import TemplatesPreview from '@/components/sections/TemplatesPreview.vue'
-import PricingPreview from '@/components/sections/PricingPreview.vue'
+import Why from '@/components/sections/Why.vue'
 import Process from '@/components/sections/Process.vue'
+import TemplatesPreview from '@/components/sections/TemplatesPreview.vue'
+import Importance from '@/components/sections/Importance.vue'
+import PricingPreview from '@/components/sections/PricingPreview.vue'
 import Testimonials from '@/components/sections/Testimonials.vue'
+import Trust from '@/components/sections/Trust.vue'
 import CTA from '@/components/sections/CTA.vue'
 </script>

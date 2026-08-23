@@ -1,180 +1,60 @@
 <template>
   <Section padding="large" background="light">
     <template #header>
-      <Badge variant="primary" class="mb-4">Tous nos templates</Badge>
-      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
-        Découvrez nos
-        <span class="text-doré">templates</span>
-      </h2>
-      <div class="divider-gold mb-8" />
-      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-        Des mises en page sobres et respectueuses — pour un hommage, un mariage ou votre présence en ligne.
-        Chaque modèle s’adapte à votre histoire.
-      </p>
+      <p class="kicker mb-4">Réalisations</p>
+      <h2 class="heading-memorial text-3xl md:text-5xl">Des espaces déjà en vie</h2>
+      <p class="mt-5 max-w-xl text-lg text-gris">Chaque projet est unique. Parcourez-les, puis créez le vôtre.</p>
     </template>
 
-    <!-- Featured Templates Grid -->
-    <div class="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <div 
-        v-for="template in featuredTemplates" 
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-12">
+      <article
+        v-for="(template, index) in featuredTemplates"
         :key="template.id"
-        class="group cursor-pointer"
-        @click="openDemo(template.demoUrl)"
+        :class="index === 0 ? 'md:col-span-12' : 'md:col-span-4'"
+        class="group"
+        v-reveal="{ delay: (index % 3) * 60 }"
       >
-        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800 transition-all duration-300 group-hover:shadow-memorial group-hover:-translate-y-1">
-          <!-- Template Preview -->
-          <div class="aspect-[16/10] bg-gradient-to-br from-noir/10 to-doré/10 relative overflow-hidden">
-            <img :src="getTemplateImage(template.category, template.name)" :alt="template.name" class="w-full h-full object-cover">
-            
-            <!-- Dark Overlay -->
-            <div class="absolute inset-0 bg-noir/20"></div>
-            
-            <!-- Category Badge -->
-            <div class="absolute top-4 left-4">
-              <Badge variant="default" size="small">
-                {{ getCategoryLabel(template.category) }}
-              </Badge>
-            </div>
-            
-            <!-- Plan Badge -->
-            <div class="absolute top-4 right-4">
-              <Badge 
-                :variant="template.plan === 'premium' ? 'gold' : template.plan === 'standard' ? 'primary' : 'secondary'" 
-                size="small"
-              >
-                {{ getPlanLabel(template.plan) }}
-              </Badge>
-            </div>
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6">
-            <h3 class="text-xl font-serif text-noir mb-2 group-hover:text-doré transition-colors">
-              {{ template.name }}
-            </h3>
-            <p class="text-sm text-gris mb-4 line-clamp-2">
-              {{ template.description }}
-            </p>
-
-            <div class="mb-4 flex items-center justify-end">
-              <div class="flex items-center space-x-2">
-                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-                <span class="text-sm text-gris">{{ template.features.length }} fonctionnalités</span>
-              </div>
-            </div>
-            
-            <div class="flex gap-2">
-              <Button 
-                variant="outline" 
-                size="small" 
-                class="flex-1"
-                @click.stop="openDemo(template.demoUrl)"
-              >
-                Démo
-              </Button>
-              <Button 
-                variant="primary" 
-                size="small" 
-                class="flex-1"
-                @click.stop="sendWhatsApp(template)"
-              >
-                Choisir
-              </Button>
+        <div class="relative overflow-hidden rounded-[1.4rem] bg-noir">
+          <img
+            :src="getTemplateImage(template)"
+            :alt="`${template.name} — ${getCategoryLabel(template.category)}`"
+            :class="index === 0 ? 'aspect-[16/8] sm:aspect-[21/9]' : 'aspect-[4/3]'"
+            class="img-editorial group-hover:scale-[1.04]"
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-noir/75 via-transparent to-transparent opacity-90" />
+          <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-5 sm:p-7">
+            <p class="text-xs uppercase tracking-[0.16em] text-doré">{{ getCategoryLabel(template.category) }}</p>
+            <h3 class="mt-1 font-serif text-2xl text-blanc sm:text-3xl">{{ template.name }}</h3>
+            <div class="mt-4 flex gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 max-md:opacity-100">
+              <Button variant="light" size="small" @click="openDemo(template.demoUrl)">Voir</Button>
+              <Button variant="secondary" size="small" @click="sendWhatsApp(template)">Créer le mien</Button>
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </div>
 
-    <!-- View All CTA -->
-    <div class="text-center">
-      <Button variant="outline" size="large" @click="$router.push('/templates')">
-        Voir Tous les Templates
-      </Button>
+    <div class="mt-12" v-reveal>
+      <Button variant="outline" @click="$router.push('/templates')">Toutes les réalisations</Button>
     </div>
   </Section>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 import Section from '@/components/ui/Section.vue'
-import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import { templates } from '@/data/templates.js'
 import { sendToWhatsApp } from '@/services/whatsapp.js'
+import { getTemplateImage, getCategoryLabel } from '@/utils/templateMedia.js'
 
-// Import all template images
-import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
-import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
-import wedding2Image from '@/assets/images/templates/mariage/wedding2.jpeg'
-import wedding3Image from '@/assets/images/templates/mariage/wedding3.jpeg'
-import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
-import profileImage from '@/assets/images/templates/profil/profile3.jpeg'
-
-const router = useRouter()
-
-/** Mémorial et mariage : un template Standard + un Premium par service */
 const featuredTemplates = computed(() => {
-  const services = ['memorial', 'mariage']
-  return services.flatMap((category) => {
-    const standard = templates.find((t) => t.category === category && t.plan === 'standard')
-    const premium = templates.find((t) => t.category === category && t.plan === 'premium')
-    return [standard, premium].filter(Boolean)
-  })
+  const preferred = ['Elegant Union', 'Romantic Wedding', 'Green Leaves', 'Premium Anniversary']
+  return preferred.map((name) => templates.find((t) => t.name === name)).filter(Boolean)
 })
 
-const getPlanLabel = (plan) => {
-  const labels = {
-    standard: 'Standard',
-    premium: 'Premium'
-  }
-  return labels[plan] || plan
-}
-
-const getCategoryLabel = (category) => {
-  const labels = {
-    memorial: 'Mémorial',
-    mariage: 'Mariage',
-    anniversaire: 'Anniversaire',
-    profil: 'Profil'
-  }
-  return labels[category] || category
-}
-
-const getTemplateImage = (category, templateName) => {
-  // Map templates to their actual images that exist
-  const templateImages = {
-    memorial: {
-      'Golden Celebration': memorialImage,
-      'Green Leaves': memorialImage,
-      'Cherry Blossoms': memorialImage,
-    },
-    mariage: {
-      'Romantic Wedding': weddingImage,
-      'Elegant Union': wedding2Image,
-      'Garden Wedding': wedding3Image
-    },
-    anniversaire: {
-      'Premium Anniversary': annivImage,
-    },
-    profil: {
-      'Professional Profile': profileImage,
-      'Creative Portfolio': profileImage,
-      'Modern CV': profileImage
-    }
-  }
-  
-  return templateImages[category]?.[templateName] || memorialImage
-}
-
-const openDemo = (url) => {
-  window.open(url, '_blank')
-}
-
-const sendWhatsApp = (template) => {
-  sendToWhatsApp(template)
-}
+const openDemo = (url) => window.open(url, '_blank', 'noopener,noreferrer')
+const sendWhatsApp = (template) => sendToWhatsApp(template)
 </script>

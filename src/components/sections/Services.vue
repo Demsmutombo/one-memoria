@@ -1,153 +1,73 @@
 <template>
   <Section padding="large">
     <template #header>
-      <Badge variant="primary" class="mb-4">Nos services</Badge>
-      <h2 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-4xl mb-6">
-        Une offre pour chaque
-        <span class="text-doré">moment de vie</span>
-      </h2>
-      <div class="divider-gold mb-8" />
-      <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-        Hommages, unions, anniversaires ou présence professionnelle — le même souci du détail.
-      </p>
+      <p class="kicker mb-4">Expériences</p>
+      <h2 class="heading-memorial text-3xl md:text-5xl">Ce que nous donnons à vivre</h2>
     </template>
 
-    <div class="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
-      <!-- Memorial Service -->
-      <div class="group cursor-pointer" @click="$router.push('/templates?category=memorial')">
-        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-noir/80 to-noir/40 relative overflow-hidden">
-            <img :src="memorialImage" alt="Sites Mémoriaux" class="h-full w-full object-cover">
-            <div class="absolute inset-0 bg-noir/20"></div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12">
+      <article
+        v-for="(activity, index) in activities"
+        :key="activity.key"
+        :class="cardClass(index)"
+        class="group relative min-h-[22rem] cursor-pointer overflow-hidden rounded-[1.4rem] bg-noir"
+        v-reveal="{ delay: index * 50 }"
+        role="link"
+        tabindex="0"
+        :aria-label="activity.title"
+        @click="openActivity(activity)"
+        @keydown.enter="openActivity(activity)"
+      >
+        <img
+          v-if="activity.category && categoryImages[activity.category]"
+          :src="categoryImages[activity.category]"
+          :alt="activity.title"
+          class="img-editorial absolute inset-0 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/45 to-noir/10" />
+        <div class="relative z-10 flex h-full flex-col justify-between p-6 sm:p-7">
+          <div class="flex items-center justify-between text-blanc/70">
+            <span class="text-xs tracking-[0.18em]">0{{ index + 1 }}</span>
+            <span class="text-xs uppercase tracking-[0.16em] text-doré">{{ activity.kicker }}</span>
           </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Sites Mémoriaux</h3>
-            <p class="text-sm text-gris mb-4">
-              Honorez la mémoire de vos proches avec dignité et élégance.
-            </p>
-            <div class="flex items-center justify-between mb-3">
-              <div class="text-doré font-bold text-lg">{{ CATEGORY_CARD_MEMORIAL.label }}</div>
-              <Badge variant="primary" size="small">{{ CATEGORY_CARD_MEMORIAL.badge }}</Badge>
-            </div>
-            <div class="flex items-center text-doré text-sm font-medium">
-              <span>Voir templates</span>
-              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wedding Service -->
-      <div class="group cursor-pointer" @click="$router.push('/templates?category=mariage')">
-        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-doré/40 to-doré/20 relative overflow-hidden">
-            <img :src="weddingImage" alt="Sites de Mariage" class="h-full w-full object-cover">
-            <div class="absolute inset-0 bg-noir/20"></div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Mariages</h3>
-            <p class="text-sm text-gris mb-4">
-              Célébrez votre amour avec un site web élégant et romantique.
-            </p>
-            <div class="flex items-center justify-between mb-3">
-              <div class="text-doré font-bold text-lg">{{ CATEGORY_CARD_MARIAGE.label }}</div>
-              <Badge :variant="CATEGORY_CARD_MARIAGE.badgeVariant" size="small">Recommandé</Badge>
-            </div>
-            <div class="flex items-center text-doré text-sm font-medium">
-              <span>Voir templates</span>
-              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-              </svg>
+          <div>
+            <h3 class="font-serif text-3xl text-blanc md:text-4xl">{{ activity.title }}</h3>
+            <p class="mt-3 max-w-md text-sm leading-relaxed text-blanc/70">{{ activity.description }}</p>
+            <div class="mt-5 flex items-center justify-between text-sm text-blanc">
+              <span>{{ activity.price?.label || 'Nous en parler' }}</span>
+              <span class="translate-y-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                Découvrir →
+              </span>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Anniversary Service -->
-      <div class="group cursor-pointer" @click="$router.push('/templates?category=anniversaire')">
-        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-yellow-400/30 to-orange-400/20 relative">
-            <img :src="annivImage" alt="Sites d'Anniversaire" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-noir/20"></div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Anniversaires</h3>
-            <p class="text-sm text-gris mb-4">
-              Commémorez vos étapes importantes avec joie et festivité.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">{{ FIXED_CARD.label }}</div>
-              <Badge variant="primary" size="small">{{ FIXED_CARD.badge }}</Badge>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Profile Service -->
-      <div class="group cursor-pointer" @click="$router.push('/templates?category=profil')">
-        <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-soft dark:border dark:border-zinc-800/80 transition-all duration-300 group-hover:shadow-memorial">
-          <div class="aspect-[4/3] bg-gradient-to-br from-blue-400/30 to-purple-400/20 relative">
-            <img :src="profileImage" alt="Profils personnels" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-noir/20"></div>
-          </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="mb-2 font-serif text-lg text-noir dark:text-zinc-100 sm:text-xl">Profils Personnels</h3>
-            <p class="text-sm text-gris mb-4">
-              Créez votre présence en ligne avec un site personnel professionnel.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="text-doré font-bold text-lg">{{ FIXED_CARD.label }}</div>
-              <Badge variant="primary" size="small">{{ FIXED_CARD.badge }}</Badge>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="mt-16 text-center">
-      <Card variant="elevated" class="max-w-4xl mx-auto">
-        <div class="p-8 md:p-12">
-          <h3 class="text-2xl md:text-3xl font-serif text-noir mb-4">
-            Prêt à Créer Votre Site ?
-          </h3>
-          <p class="text-gris mb-8 max-w-2xl mx-auto">
-            Contactez-nous dès aujourd'hui pour commencer votre projet. 
-            Nous vous guiderons à chaque étape pour créer un site web qui vous ressemble.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="large" @click="sendToWhatsApp">
-              Contacter WhatsApp
-            </Button>
-            <Button variant="outline" size="large" @click="$router.push('/templates')">
-              Explorer les Templates
-            </Button>
-          </div>
-        </div>
-      </Card>
+      </article>
     </div>
   </Section>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
-import memorialImage from '@/assets/images/templates/memorial/memorial.jpeg'
-import weddingImage from '@/assets/images/templates/mariage/wedding.jpeg'
-import annivImage from '@/assets/images/templates/anniversaire/anniv4.jpeg'
-import profileImage from '@/assets/images/templates/profil/profile3.jpeg'
 import Section from '@/components/ui/Section.vue'
-import Card from '@/components/ui/Card.vue'
-import Badge from '@/components/ui/Badge.vue'
-import Button from '@/components/ui/Button.vue'
-import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
-import { CATEGORY_CARD_MEMORIAL, CATEGORY_CARD_MARIAGE, FIXED_CARD } from '@/data/pricing.js'
+import { activities } from '@/data/services.js'
+import { categoryImages } from '@/utils/templateMedia.js'
+import { sendServiceWhatsApp } from '@/services/whatsapp.js'
 
 const router = useRouter()
 
-const sendToWhatsApp = () => {
-  sendGeneralWhatsApp()
+const cardClass = (index) => {
+  if (index === 0) return 'lg:col-span-7 min-h-[26rem]'
+  if (index === 1) return 'lg:col-span-5 min-h-[26rem]'
+  return 'lg:col-span-4'
+}
+
+const openActivity = (activity) => {
+  if (activity.href) {
+    router.push(activity.href)
+    return
+  }
+  sendServiceWhatsApp(activity.title)
 }
 </script>

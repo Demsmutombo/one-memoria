@@ -21,27 +21,23 @@ const props = defineProps({
 })
 
 const badgeClass = computed(() => {
-  const baseClass = 'inline-flex items-center font-weight-500 rounded-full'
-  
+  const baseClass = 'inline-flex items-center rounded-full font-medium tracking-wide'
+
   const variantClasses = {
-    default: 'bg-gris-clair dark:bg-zinc-800 text-noir dark:text-zinc-100',
-    primary: 'bg-doré text-noir',
-    secondary: 'bg-noir text-blanc dark:bg-zinc-800 dark:text-zinc-100',
+    default: 'bg-gris-clair text-noir dark:bg-zinc-800 dark:text-zinc-100',
+    primary: 'bg-noir text-blanc',
+    secondary: 'bg-noir text-blanc',
     success: 'bg-green-100 text-green-800',
     warning: 'bg-yellow-100 text-yellow-800',
-    gold: 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-noir'
+    gold: 'bg-doré text-noir'
   }
-  
+
   const sizeClasses = {
-    small: 'px-2 py-1 text-xs',
-    medium: 'px-3 py-1 text-sm',
-    large: 'px-4 py-2 text-base'
+    small: 'px-2.5 py-0.5 text-[0.65rem] uppercase tracking-[0.14em]',
+    medium: 'px-3 py-1 text-xs uppercase tracking-[0.14em]',
+    large: 'px-3.5 py-1.5 text-xs uppercase tracking-[0.14em]'
   }
-  
-  return [
-    baseClass,
-    variantClasses[props.variant],
-    sizeClasses[props.size]
-  ].join(' ')
+
+  return [baseClass, variantClasses[props.variant], sizeClasses[props.size]].join(' ')
 })
 </script>

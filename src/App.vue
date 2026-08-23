@@ -1,6 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-ivoire dark:bg-zinc-950 text-noir dark:text-zinc-100 transition-colors duration-300">
-    <!-- Loader global : fond noir, logo seul avec zoom d’ouverture -->
+  <div id="app" class="min-h-screen bg-ivoire text-noir transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-100">
     <div
       v-if="showGlobalLoader"
       class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-noir px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))]"
@@ -13,25 +12,31 @@
       >
     </div>
 
-    <!-- Contenu de l'application -->
     <div v-show="!showGlobalLoader">
-      <Navbar />
-      <main class="pt-[3.75rem] sm:pt-[4.25rem] md:pt-[4.5rem]">
+      <a
+        href="#contenu"
+        class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-doré focus:px-4 focus:py-2 focus:text-noir"
+      >
+        Aller au contenu
+      </a>
+      <Navbar v-if="route.name !== 'start'" />
+      <main id="contenu">
         <router-view />
       </main>
-      <Footer />
+      <Footer v-if="route.name !== 'start'" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import Footer from '@/components/layout/Footer.vue'
 import logoImage from '@/assets/images/templates/logo (1).png'
 
 const router = useRouter()
+const route = useRoute()
 const showGlobalLoader = ref(false)
 const splashKey = ref(0)
 
@@ -79,5 +84,13 @@ watch(
 
 .logo-intro-zoom {
   animation: logo-zoom-open 1.1s cubic-bezier(0.34, 1.35, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-intro-zoom {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>

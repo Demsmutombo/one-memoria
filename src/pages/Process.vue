@@ -1,19 +1,11 @@
 <template>
   <div class="bg-ivoire dark:bg-zinc-950 min-h-screen text-noir dark:text-zinc-100 transition-colors duration-300">
-    <!-- Header Section -->
-    <Section padding="large">
-      <template #header>
-        <Badge variant="primary" class="mb-4">Notre processus</Badge>
-        <h1 class="heading-memorial text-3xl font-semibold text-noir dark:text-zinc-100 md:text-5xl mb-6">
-          Simple et
-          <span class="text-doré">efficace</span>
-        </h1>
-        <div class="divider-gold mb-8" />
-        <p class="text-lg text-gris dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          De la première idée à la mise en ligne, chaque étape est expliquée — sans jargon inutile.
-        </p>
-      </template>
-    </Section>
+    <PageHero
+      kicker="Notre processus"
+      title="Simple et efficace"
+      subtitle="De la première idée à la mise en ligne, chaque étape est expliquée — sans jargon inutile."
+      :image="processHero"
+    />
 
     <!-- Process Timeline -->
     <Section padding="large" background="light">
@@ -40,7 +32,7 @@
               <div class="ml-6 md:ml-0 md:flex-1 md:mx-12">
                 <Card variant="elevated" hover>
                   <div class="p-6">
-                    <h3 class="text-xl font-serif text-noir mb-3">{{ step.title }}</h3>
+                    <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-3">{{ step.title }}</h3>
                     <p class="text-gris mb-4">{{ step.description }}</p>
                     
                     <!-- Step Details -->
@@ -76,7 +68,7 @@
     <!-- Detailed Process Steps -->
     <Section padding="large">
       <template #header>
-        <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+        <h2 class="text-3xl md:text-4xl font-serif text-noir dark:text-zinc-100 mb-6">
           Détails du
           <span class="text-doré">Processus</span>
         </h2>
@@ -94,7 +86,7 @@
           <div class="w-20 h-20 bg-doré/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <component :is="step.icon" class="w-10 h-10 text-doré" />
           </div>
-          <h3 class="text-xl font-serif text-noir mb-3">{{ step.title }}</h3>
+          <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-3">{{ step.title }}</h3>
           <p class="text-gris leading-relaxed">{{ step.description }}</p>
         </div>
       </div>
@@ -103,7 +95,7 @@
     <!-- What We Need Section -->
     <Section padding="large" background="light">
       <template #header>
-        <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+        <h2 class="text-3xl md:text-4xl font-serif text-noir dark:text-zinc-100 mb-6">
           Ce Dont Nous Avons
           <span class="text-doré">Besoin</span>
         </h2>
@@ -121,7 +113,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Informations de base</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Informations de base</h3>
               <p class="text-gris text-sm">Nom, dates importantes, biographie, histoire personnelle</p>
             </div>
           </div>
@@ -133,7 +125,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Photos et vidéos</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Photos et vidéos</h3>
               <p class="text-gris text-sm">Images haute qualité, vidéos, documents importants</p>
             </div>
           </div>
@@ -145,7 +137,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Préférences de design</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Préférences de design</h3>
               <p class="text-gris text-sm">Couleurs, style, polices, inspiration visuelle</p>
             </div>
           </div>
@@ -159,7 +151,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Coordonnées</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Coordonnées</h3>
               <p class="text-gris text-sm">Email, téléphone, réseaux sociaux pour le contact</p>
             </div>
           </div>
@@ -172,7 +164,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Informations d'événement</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Informations d'événement</h3>
               <p class="text-gris text-sm">Date, lieu, horaires, instructions pour les invités</p>
             </div>
           </div>
@@ -184,7 +176,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-noir mb-2">Contenu personnalisé</h3>
+              <h3 class="text-lg font-medium text-noir dark:text-zinc-100 mb-2">Contenu personnalisé</h3>
               <p class="text-gris text-sm">Textes, citations, messages spéciaux, témoignages</p>
             </div>
           </div>
@@ -195,17 +187,17 @@
     <!-- Timeline Summary -->
     <Section padding="large">
       <template #header>
-        <h2 class="text-3xl md:text-4xl font-serif text-noir mb-6">
+        <h2 class="text-3xl md:text-4xl font-serif text-noir dark:text-zinc-100 mb-6">
           Chronologie
           <span class="text-doré">Estimée</span>
         </h2>
       </template>
 
       <div class="max-w-4xl mx-auto">
-        <div class="bg-gris-clair rounded-lg p-8">
+        <div class="bg-gris-clair rounded-lg p-8 dark:bg-zinc-800">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 class="text-xl font-serif text-noir mb-4">Phase 1: Préparation (1-2 jours)</h3>
+              <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-4">Phase 1: Préparation (1-2 jours)</h3>
               <ul class="space-y-2 text-gris">
                 <li class="flex items-center">
                   <svg class="w-4 h-4 text-doré mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -229,7 +221,7 @@
             </div>
             
             <div>
-              <h3 class="text-xl font-serif text-noir mb-4">Phase 2: Création (3-5 jours)</h3>
+              <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-4">Phase 2: Création (3-5 jours)</h3>
               <ul class="space-y-2 text-gris">
                 <li class="flex items-center">
                   <svg class="w-4 h-4 text-doré mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -253,7 +245,7 @@
             </div>
             
             <div>
-              <h3 class="text-xl font-serif text-noir mb-4">Phase 3: Finalisation (1-2 jours)</h3>
+              <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-4">Phase 3: Finalisation (1-2 jours)</h3>
               <ul class="space-y-2 text-gris">
                 <li class="flex items-center">
                   <svg class="w-4 h-4 text-doré mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -277,7 +269,7 @@
             </div>
             
             <div>
-              <h3 class="text-xl font-serif text-noir mb-4">Phase 4: Livraison (Immédiat)</h3>
+              <h3 class="text-xl font-serif text-noir dark:text-zinc-100 mb-4">Phase 4: Livraison (Immédiat)</h3>
               <ul class="space-y-2 text-gris">
                 <li class="flex items-center">
                   <svg class="w-4 h-4 text-doré mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -309,7 +301,7 @@
       <div class="text-center max-w-4xl mx-auto">
         <Card variant="elevated">
           <div class="p-8 md:p-12">
-            <h2 class="text-3xl font-serif text-noir mb-4">
+            <h2 class="text-3xl font-serif text-noir dark:text-zinc-100 mb-4">
               Prêt à Commencer ?
             </h2>
             <p class="text-gris mb-8">
@@ -333,11 +325,14 @@
 
 <script setup>
 import { h } from 'vue'
+import PageHero from '@/components/ui/PageHero.vue'
 import Section from '@/components/ui/Section.vue'
-import Badge from '@/components/ui/Badge.vue'
 import Button from '@/components/ui/Button.vue'
 import Card from '@/components/ui/Card.vue'
 import { sendGeneralWhatsApp } from '@/services/whatsapp.js'
+import { media } from '@/utils/templateMedia.js'
+
+const processHero = media.anniv
 
 // Icon components
 const SearchIcon = () => h('svg', { fill: 'currentColor', viewBox: '0 0 20 20', class: 'w-10 h-10' }, [

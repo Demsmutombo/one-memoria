@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --om-ivory: #f7f3ec;
+  --om-ink: #0e0c0a;
+  --om-gold: #b8944a;
+  --om-stone: #6a645c;
+  --om-paper: #fffcf7;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -11,18 +19,27 @@
   html.dark {
     color-scheme: dark;
   }
-  
+
   body {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-feature-settings: 'kern' 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     text-size-adjust: 100%;
+    background: var(--om-ivory);
+    color: var(--om-ink);
   }
 
   #app {
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
   }
 
   button,
@@ -31,43 +48,110 @@
     touch-action: manipulation;
   }
 
-  ::selection {
-    @apply bg-doré/25 text-noir;
+  :focus-visible {
+    outline: 2px solid var(--om-gold);
+    outline-offset: 3px;
   }
 
-  .dark ::selection {
-    @apply bg-doré/30 text-blanc;
+  ::selection {
+    background: rgba(184, 148, 74, 0.28);
+    color: var(--om-ink);
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-doré text-noir px-6 py-3 rounded-sm font-medium hover:bg-yellow-500 transition-colors duration-300;
-  }
-  
-  .btn-secondary {
-    @apply bg-noir text-blanc px-6 py-3 rounded-sm font-medium hover:bg-gray-800 transition-colors duration-300;
-  }
-  
-  .btn-outline {
-    @apply border border-noir text-noir px-6 py-3 rounded-sm font-medium hover:bg-noir hover:text-blanc transition-colors duration-300;
-  }
-  
-  .section-padding {
-    @apply py-16 lg:py-24;
-  }
-  
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-    padding-left: max(1rem, env(safe-area-inset-left, 0px));
-    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    @apply mx-auto max-w-[1180px] px-5 sm:px-6 lg:px-8;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
   }
 
   .heading-memorial {
-    @apply font-serif tracking-memorial text-balance;
+    @apply font-serif text-balance text-noir;
   }
 
-  .divider-gold {
-    @apply h-px w-16 bg-gradient-to-r from-transparent via-doré to-transparent mx-auto;
+  .kicker {
+    @apply inline-flex items-center gap-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-doré;
+  }
+
+  .kicker::before {
+    content: '';
+    @apply hidden h-px w-6 bg-doré/70 sm:block;
+  }
+
+  .nav-link {
+    @apply relative text-[0.86rem] font-medium tracking-wide text-noir/70 transition-colors duration-300 hover:text-noir dark:text-zinc-300 dark:hover:text-white;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-doré transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.router-link-active::after {
+    @apply w-full;
+  }
+
+  .nav-link-light {
+    @apply text-white/75 hover:text-white;
+  }
+
+  .nav-link-light::after {
+    @apply bg-blanc;
+  }
+
+  .img-editorial {
+    @apply h-full w-full object-cover transition-transform duration-700 ease-out;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hors @layer : bat text-noir (utilitaire) pour que les titres restent lisibles en sombre. */
+html.dark body {
+  background: #09090b;
+  color: #f4f0e8;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4 {
+  color: #f4f0e8;
+}
+
+html.dark h1.text-blanc,
+html.dark h2.text-blanc,
+html.dark h3.text-blanc,
+html.dark h4.text-blanc {
+  color: #fffcf7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .img-editorial,
+  .nav-link::after {
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

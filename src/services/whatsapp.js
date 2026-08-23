@@ -2,6 +2,11 @@ import {
   FIXED_PRICE_ANNIVERSAIRE_PROFIL,
   TIER_PRICES_WHATSAPP_LINE_FR
 } from '@/data/pricing.js'
+import { whatsappUrl } from '@/data/contact.js'
+
+const openWhatsApp = (message) => {
+  window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer')
+}
 
 export const sendToWhatsApp = (template) => {
   const planLine =
@@ -21,8 +26,7 @@ Lien démo : ${template.demoUrl}
 
 Pouvez-vous m'aider avec ce projet ?`
 
-  const encodedMessage = encodeURIComponent(message)
-  window.open(`https://wa.me/243991683269?text=${encodedMessage}`, '_blank')
+  openWhatsApp(message)
 }
 
 export const sendGeneralWhatsApp = () => {
@@ -35,8 +39,37 @@ ${TIER_PRICES_WHATSAPP_LINE_FR}
 
 Pouvez-vous m'indiquer les options disponibles ?`
 
-  const encodedMessage = encodeURIComponent(message)
-  window.open(`https://wa.me/243991683269?text=${encodedMessage}`, '_blank')
+  openWhatsApp(message)
+}
+
+export const sendCreateSpaceWhatsApp = () => {
+  const message = `Bonjour One Memoria,
+
+Je souhaite créer mon espace numérique personnalisé.
+
+Pouvez-vous m'accompagner pour démarrer ?`
+
+  openWhatsApp(message)
+}
+
+export const sendServiceWhatsApp = (serviceName) => {
+  const message = `Bonjour One Memoria,
+
+Je souhaite créer un espace : ${serviceName}.
+
+Pouvez-vous m'indiquer les options disponibles ?`
+
+  openWhatsApp(message)
+}
+
+export const sendPlanWhatsApp = (plan, price) => {
+  const message = `Bonjour One Memoria,
+
+Je suis intéressé(e) par la formule "${plan}" (${price}).
+
+Pouvez-vous me donner plus d'informations ?`
+
+  openWhatsApp(message)
 }
 
 export const sendContactWhatsApp = (formData) => {
@@ -52,6 +85,5 @@ Téléphone : ${formData.phone || 'Non spécifié'}
 Message :
 ${formData.message}`
 
-  const encodedMessage = encodeURIComponent(message)
-  window.open(`https://wa.me/243991683269?text=${encodedMessage}`, '_blank')
+  openWhatsApp(message)
 }
