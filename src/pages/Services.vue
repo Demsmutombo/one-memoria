@@ -39,7 +39,7 @@
             </div>
             <div class="mt-6 flex flex-col gap-2 sm:flex-row">
               <Button variant="outline" @click="openActivity(activity)">
-                {{ activity.category ? 'Voir les réalisations' : 'Nous écrire' }}
+                {{ activity.href?.startsWith('/templates') ? 'Voir les réalisations' : 'Nous écrire' }}
               </Button>
               <Button variant="primary" @click="chooseActivity(activity)">
                 Créer mon espace

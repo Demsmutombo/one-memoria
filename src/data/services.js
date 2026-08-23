@@ -52,7 +52,7 @@ export const activities = [
     description:
       'Créer un espace numérique pour présenter une organisation, son histoire, ses actions et son héritage.',
     href: '/contact',
-    category: null,
+    category: 'heritage',
     price: null,
     features: ['Histoire', 'Actions', 'Galerie', 'Contact']
   }

@@ -8,6 +8,7 @@ import anniv3 from '@/assets/images/templates/anniversaire/anniv3.jpeg'
 import anniv4 from '@/assets/images/templates/anniversaire/anniv4.jpeg'
 import profile3 from '@/assets/images/templates/profil/profile3.jpeg'
 import profile4 from '@/assets/images/templates/profil/profile4.jpeg'
+import heritage from '@/assets/images/services/heritage.jfif'
 
 export const media = {
   memorial,
@@ -19,7 +20,8 @@ export const media = {
   anniv3,
   anniv4,
   profile3,
-  profile4
+  profile4,
+  heritage
 }
 
 const imagesByName = {
@@ -40,7 +42,8 @@ export const categoryImages = {
   memorial,
   mariage: wedding,
   anniversaire: anniv4,
-  profil: profile3
+  profil: profile3,
+  heritage
 }
 
 export function getTemplateImage(templateOrCategory, name) {
