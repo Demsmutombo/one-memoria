@@ -1,27 +1,29 @@
 <template>
   <nav
     :class="[
-      'fixed inset-x-0 top-0 z-50 transition-all duration-500',
-      scrolled || mobileMenuOpen
-        ? 'border-b border-noir/5 bg-ivoire/88 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/88'
-        : overDarkHero
-          ? 'bg-gradient-to-b from-[#070605]/90 to-transparent'
-          : 'bg-transparent'
+      'fixed inset-x-0 top-0 z-[90] transition-colors duration-300',
+      mobileMenuOpen
+        ? 'bg-ivoire dark:bg-zinc-950'
+        : scrolled
+          ? 'border-b border-noir/5 bg-ivoire/88 dark:border-white/10 dark:bg-zinc-950/88'
+          : overDarkHero
+            ? 'bg-gradient-to-b from-[#070605]/90 to-transparent'
+            : 'bg-transparent'
     ]"
   >
     <div class="container-custom">
-      <div class="flex min-h-[4.25rem] items-center justify-between sm:min-h-[4.75rem]">
+      <div class="flex min-h-[4.25rem] items-center gap-3 sm:min-h-[4.75rem]">
         <router-link
           to="/home"
-          class="inline-flex min-w-0 items-center gap-2.5"
+          class="flex min-w-0 flex-1 items-center gap-2.5"
           aria-label="One Memoria — Accueil"
           @click="closeMobileMenu"
         >
           <img :src="logoImage" alt="" class="h-8 w-auto shrink-0 object-contain sm:h-9">
           <span
             :class="[
-              'truncate font-serif text-xl sm:text-2xl',
-              overDarkHero ? 'text-blanc' : 'text-noir dark:text-zinc-100'
+              'truncate font-serif text-lg sm:text-2xl',
+              overDarkHero && !mobileMenuOpen ? 'text-blanc' : 'text-noir dark:text-zinc-100'
             ]"
           >
             One Memoria
@@ -39,7 +41,7 @@
           </router-link>
         </div>
 
-        <div class="hidden items-center gap-3 lg:flex">
+        <div class="hidden shrink-0 items-center gap-3 lg:flex">
           <ThemeToggle />
           <Button
             :variant="overDarkHero ? 'outline' : 'primary'"
@@ -50,51 +52,58 @@
           </Button>
         </div>
 
-        <div class="flex items-center gap-2 lg:hidden">
+        <div class="flex shrink-0 items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
             type="button"
             :aria-expanded="mobileMenuOpen"
             aria-controls="mobile-nav"
             :aria-label="mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'"
-            :class="[
-              'rounded-full p-2.5 hover:bg-noir/5 dark:hover:bg-white/10',
-              overDarkHero ? 'text-blanc' : 'text-noir dark:text-zinc-100'
-            ]"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-doré text-noir"
             @click="toggleMobileMenu"
           >
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M4 7h16M4 12h16M4 17h16" />
-              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M6 18L18 6M6 6l12 12" />
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path v-if="!mobileMenuOpen" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+              <path v-else stroke-linecap="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
       </div>
     </div>
+  </nav>
 
-    <div
-      v-if="mobileMenuOpen"
-      id="mobile-nav"
-      class="fixed inset-x-0 top-[4.25rem] bottom-0 z-40 overflow-y-auto bg-ivoire px-6 py-8 dark:bg-zinc-950 lg:hidden"
-    >
-      <div class="flex min-h-full flex-col justify-between pb-8">
-        <div class="flex flex-col gap-2">
+  <Teleport to="body">
+    <div v-if="mobileMenuOpen" class="lg:hidden">
+      <button
+        type="button"
+        class="fixed inset-0 z-[80] bg-noir/35"
+        aria-label="Fermer le menu"
+        @click="closeMobileMenu"
+      />
+      <div
+        id="mobile-nav"
+        class="fixed inset-x-4 top-[4.75rem] z-[85] rounded-2xl border border-noir/10 bg-[#fffcf7] p-3 shadow-memorial dark:border-white/10 dark:bg-zinc-900 sm:inset-x-6"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <nav class="flex flex-col" aria-label="Menu mobile">
           <router-link
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="border-b border-noir/10 py-4 font-serif text-3xl text-noir dark:border-white/10 dark:text-zinc-100"
+            class="rounded-xl px-3 py-3 font-sans text-base font-semibold !text-[#0e0c0a] dark:!text-white"
             @click="closeMobileMenu"
           >
             {{ item.label }}
           </router-link>
-        </div>
-        <Button variant="primary" full-width size="large" class="mt-10" @click="createSpace">
+        </nav>
+        <Button variant="primary" full-width class="mt-2" @click="createSpace">
           Créer mon espace
         </Button>
       </div>
     </div>
-  </nav>
+  </Teleport>
 </template>
 
 <script setup>
@@ -126,7 +135,9 @@ const onScroll = () => {
 }
 
 watch(() => route.fullPath, () => { mobileMenuOpen.value = false })
-watch(mobileMenuOpen, (open) => { document.body.style.overflow = open ? 'hidden' : '' })
+watch(mobileMenuOpen, (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+})
 
 onMounted(() => {
   onScroll()

@@ -8,17 +8,12 @@
       aria-live="polite"
       aria-label="One Memoria"
     >
-      <div class="splash-glow" aria-hidden="true" />
-      <div class="splash-content">
-        <img
-          :key="splashKey"
-          :src="logoImage"
-          alt=""
-          class="splash-logo"
-        >
-        <p class="splash-name">One Memoria</p>
-        <span class="splash-line" aria-hidden="true" />
-      </div>
+      <img
+        :key="splashKey"
+        :src="logoImage"
+        alt="One Memoria"
+        class="splash-logo"
+      >
     </div>
 
     <div v-show="!showGlobalLoader">
@@ -71,8 +66,8 @@ const startLoader = () => {
       if (router.currentRoute.value.name === 'start') {
         router.push('/home')
       }
-    }, 700)
-  }, 2400)
+    }, 800)
+  }, 2800)
 }
 
 onMounted(() => {
@@ -108,98 +103,56 @@ watch(
     max(1.5rem, env(safe-area-inset-bottom))
     max(1.25rem, env(safe-area-inset-left));
   opacity: 1;
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .splash-screen.is-leaving {
   opacity: 0;
 }
 
-.splash-glow {
-  position: absolute;
-  width: 22rem;
-  height: 22rem;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(184, 148, 74, 0.16) 0%, rgba(184, 148, 74, 0) 68%);
-  pointer-events: none;
-}
-
-.splash-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.splash-screen.is-leaving .splash-logo {
+  animation: none;
+  transform: scale(0.9);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .splash-logo {
-  height: 5.75rem;
-  width: 5.75rem;
+  width: min(20rem, 72vw);
+  height: min(20rem, 72vw);
   object-fit: contain;
-  animation: splash-mark 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: splash-zoom 2.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.splash-name {
-  margin-top: 1.35rem;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.85rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: #f4f0e8;
-  animation: splash-text 1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.splash-line {
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  margin-top: 1rem;
-  background: #b8944a;
-  transform-origin: center;
-  animation: splash-line 0.8s 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes splash-mark {
-  from {
+@keyframes splash-zoom {
+  0% {
     opacity: 0;
-    transform: scale(0.92);
+    transform: scale(0.78);
   }
-  to {
+  22% {
     opacity: 1;
-    transform: none;
+    transform: scale(1.08);
   }
-}
-
-@keyframes splash-text {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
+  58% {
     opacity: 1;
-    transform: none;
+    transform: scale(1.14);
   }
-}
-
-@keyframes splash-line {
-  from {
-    opacity: 0;
-    transform: scaleX(0.3);
-  }
-  to {
+  100% {
     opacity: 1;
-    transform: none;
+    transform: scale(1);
   }
 }
 
 @media (min-width: 640px) {
   .splash-logo {
-    height: 6.5rem;
-    width: 6.5rem;
+    width: min(24rem, 42vw);
+    height: min(24rem, 42vw);
   }
-  .splash-name {
-    font-size: 2.15rem;
+}
+
+@media (min-width: 1024px) {
+  .splash-logo {
+    width: 26rem;
+    height: 26rem;
   }
 }
 
@@ -207,9 +160,7 @@ watch(
   .splash-screen {
     transition: none;
   }
-  .splash-logo,
-  .splash-name,
-  .splash-line {
+  .splash-logo {
     animation: none;
     opacity: 1;
     transform: none;
